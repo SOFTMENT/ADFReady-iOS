@@ -6,47 +6,320 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		360809806F154C9497592BCE /* Pods_Adf_Ready.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 441FF328FB927D89ED666EC0 /* Pods_Adf_Ready.framework */; };
+		5D4E12412CE78205004E174F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E12402CE78205004E174F /* AppDelegate.swift */; };
+		5D4E12432CE78220004E174F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D4E12422CE78220004E174F /* Assets.xcassets */; };
+		5D4E12492CE7822E004E174F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D4E12452CE7822E004E174F /* LaunchScreen.storyboard */; };
+		5D4E124B2CE7822E004E174F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D4E12462CE7822E004E174F /* Main.storyboard */; };
+		5D4E124C2CE7822E004E174F /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E12482CE7822E004E174F /* WelcomeViewController.swift */; };
+		5D4E124D2CE7822E004E174F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E12472CE7822E004E174F /* SceneDelegate.swift */; };
+		5D4E12532CE78B10004E174F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D4E12522CE78B10004E174F /* GoogleService-Info.plist */; };
+		5D4E12582CE78BCD004E174F /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D4E12542CE78BCD004E174F /* Roboto-Bold.ttf */; };
+		5D4E12592CE78BCD004E174F /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D4E12552CE78BCD004E174F /* Roboto-Light.ttf */; };
+		5D4E125A2CE78BCD004E174F /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D4E12562CE78BCD004E174F /* Roboto-Medium.ttf */; };
+		5D4E125B2CE78BCD004E174F /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D4E12572CE78BCD004E174F /* Roboto-Regular.ttf */; };
+		5D4E125D2CE7ABCF004E174F /* WelcomeViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E125C2CE7ABCF004E174F /* WelcomeViewController2.swift */; };
+		5D4E125F2CE7B6D2004E174F /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E125E2CE7B6CC004E174F /* RoundedButton.swift */; };
+		5D4E12612CE7BD3D004E174F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E12602CE7BD3D004E174F /* SignInViewController.swift */; };
+		5D4E12632CE7BD62004E174F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E12622CE7BD62004E174F /* SignUpViewController.swift */; };
+		5D4E12652CE7C026004E174F /* UserTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E12642CE7C026004E174F /* UserTypeViewController.swift */; };
+		5D4E12672CE7C1E9004E174F /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E12662CE7C1E6004E174F /* RoundedView.swift */; };
+		5D4E126A2CE7CD31004E174F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E12692CE7CD2C004E174F /* Constants.swift */; };
+		5D4E126C2CE7CD83004E174F /* MyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E126B2CE7CD7D004E174F /* MyExtensions.swift */; };
+		5D4E126E2CE7E56A004E174F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E126D2CE7E566004E174F /* UserModel.swift */; };
+		5D4E12702CE7E5FC004E174F /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E126F2CE7E5F9004E174F /* TabbarViewController.swift */; };
+		5D4E12722CE7E85E004E174F /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E12712CE7E85C004E174F /* InformationViewController.swift */; };
+		5D4E12742CE88F4F004E174F /* WorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E12732CE88F41004E174F /* WorkoutViewController.swift */; };
+		5D4E12762CE88FB9004E174F /* PFATestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E12752CE88FAF004E174F /* PFATestingViewController.swift */; };
+		5D4E12782CE88FD6004E174F /* TheReadyHubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E12772CE88FCD004E174F /* TheReadyHubViewController.swift */; };
+		5D4E127A2CE88FFA004E174F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E12792CE88FF1004E174F /* ProfileViewController.swift */; };
+		5D4E127C2CE891C2004E174F /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E127B2CE891BB004E174F /* CustomTextField.swift */; };
+		5DC36F492CE8ADF7008714E1 /* FirebaseStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC36F482CE8ADEE008714E1 /* FirebaseStoreManager.swift */; };
+		5DC36F4B2CE9237C008714E1 /* ContinueAsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC36F4A2CE9236E008714E1 /* ContinueAsViewController.swift */; };
+		5DC36F4D2CE92CC6008714E1 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC36F4C2CE92CC1008714E1 /* CategoryTableViewCell.swift */; };
+		5DC36F4F2CE930A5008714E1 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC36F4E2CE92F79008714E1 /* CategoryModel.swift */; };
+		5DC36F512CE930F0008714E1 /* ContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC36F502CE930EB008714E1 /* ContentModel.swift */; };
+		5DC36F532CE9311A008714E1 /* MultiVideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC36F522CE93111008714E1 /* MultiVideoModel.swift */; };
+		5DC36F552CE93151008714E1 /* MyTapGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC36F542CE9314D008714E1 /* MyTapGesture.swift */; };
+		5DC36F572CE931C4008714E1 /* SubcategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC36F562CE931B3008714E1 /* SubcategoryViewController.swift */; };
+		5DC36F592CE9328B008714E1 /* ViewContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC36F582CE93289008714E1 /* ViewContentViewController.swift */; };
+		5DC36F5B2CE932CC008714E1 /* ContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC36F5A2CE932C9008714E1 /* ContentTableViewCell.swift */; };
+		5DC36F5E2CE93862008714E1 /* ReloadSubCatInterface .swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC36F5D2CE93860008714E1 /* ReloadSubCatInterface .swift */; };
+		5DC36F612CE939DB008714E1 /* AWSAuthCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36F602CE939DB008714E1 /* AWSAuthCore */; };
+		5DC36F632CE939DB008714E1 /* AWSConnect in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36F622CE939DB008714E1 /* AWSConnect */; };
+		5DC36F652CE939DB008714E1 /* AWSCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36F642CE939DB008714E1 /* AWSCore */; };
+		5DC36F692CE939DB008714E1 /* AWSLocationXCF in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36F682CE939DB008714E1 /* AWSLocationXCF */; };
+		5DC36F6B2CE939DB008714E1 /* AWSLogs in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36F6A2CE939DB008714E1 /* AWSLogs */; };
+		5DC36F6D2CE939DB008714E1 /* AWSMobileClientXCF in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36F6C2CE939DB008714E1 /* AWSMobileClientXCF */; };
+		5DC36F6F2CE939DB008714E1 /* AWSS3 in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36F6E2CE939DB008714E1 /* AWSS3 */; };
+		5DC36F742CE93BAF008714E1 /* AWSAPIGateway in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36F732CE93BAF008714E1 /* AWSAPIGateway */; };
+		5DC36F762CE93BAF008714E1 /* AWSAppleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36F752CE93BAF008714E1 /* AWSAppleSignIn */; };
+		5DC36F782CE93BAF008714E1 /* AWSAuthCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36F772CE93BAF008714E1 /* AWSAuthCore */; };
+		5DC36F7A2CE93BAF008714E1 /* AWSAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36F792CE93BAF008714E1 /* AWSAuthUI */; };
+		5DC36F7C2CE93BAF008714E1 /* AWSAutoScaling in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36F7B2CE93BAF008714E1 /* AWSAutoScaling */; };
+		5DC36F7E2CE93BAF008714E1 /* AWSChimeSDKIdentity in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36F7D2CE93BAF008714E1 /* AWSChimeSDKIdentity */; };
+		5DC36F802CE93BAF008714E1 /* AWSChimeSDKMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36F7F2CE93BAF008714E1 /* AWSChimeSDKMessaging */; };
+		5DC36F822CE93BAF008714E1 /* AWSCloudWatch in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36F812CE93BAF008714E1 /* AWSCloudWatch */; };
+		5DC36F842CE93BAF008714E1 /* AWSCognitoAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36F832CE93BAF008714E1 /* AWSCognitoAuth */; };
+		5DC36F862CE93BAF008714E1 /* AWSCognitoIdentityProvider in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36F852CE93BAF008714E1 /* AWSCognitoIdentityProvider */; };
+		5DC36F882CE93BAF008714E1 /* AWSCognitoIdentityProviderASF in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36F872CE93BAF008714E1 /* AWSCognitoIdentityProviderASF */; };
+		5DC36F8A2CE93BAF008714E1 /* AWSComprehend in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36F892CE93BAF008714E1 /* AWSComprehend */; };
+		5DC36F8C2CE93BAF008714E1 /* AWSConnect in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36F8B2CE93BAF008714E1 /* AWSConnect */; };
+		5DC36F8E2CE93BAF008714E1 /* AWSConnectParticipant in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36F8D2CE93BAF008714E1 /* AWSConnectParticipant */; };
+		5DC36F902CE93BAF008714E1 /* AWSCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36F8F2CE93BAF008714E1 /* AWSCore */; };
+		5DC36F922CE93BAF008714E1 /* AWSDynamoDB in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36F912CE93BAF008714E1 /* AWSDynamoDB */; };
+		5DC36F942CE93BAF008714E1 /* AWSEC2 in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36F932CE93BAF008714E1 /* AWSEC2 */; };
+		5DC36F962CE93BAF008714E1 /* AWSElasticLoadBalancing in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36F952CE93BAF008714E1 /* AWSElasticLoadBalancing */; };
+		5DC36F982CE93BAF008714E1 /* AWSFacebookSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36F972CE93BAF008714E1 /* AWSFacebookSignIn */; };
+		5DC36F9A2CE93BAF008714E1 /* AWSGoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36F992CE93BAF008714E1 /* AWSGoogleSignIn */; };
+		5DC36F9C2CE93BAF008714E1 /* AWSIoT in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36F9B2CE93BAF008714E1 /* AWSIoT */; };
+		5DC36F9E2CE93BAF008714E1 /* AWSKMS in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36F9D2CE93BAF008714E1 /* AWSKMS */; };
+		5DC36FA02CE93BAF008714E1 /* AWSKinesis in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36F9F2CE93BAF008714E1 /* AWSKinesis */; };
+		5DC36FA22CE93BAF008714E1 /* AWSKinesisVideo in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36FA12CE93BAF008714E1 /* AWSKinesisVideo */; };
+		5DC36FA42CE93BAF008714E1 /* AWSKinesisVideoArchivedMedia in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36FA32CE93BAF008714E1 /* AWSKinesisVideoArchivedMedia */; };
+		5DC36FA62CE93BAF008714E1 /* AWSKinesisVideoSignaling in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36FA52CE93BAF008714E1 /* AWSKinesisVideoSignaling */; };
+		5DC36FA82CE93BAF008714E1 /* AWSKinesisVideoWebRTCStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36FA72CE93BAF008714E1 /* AWSKinesisVideoWebRTCStorage */; };
+		5DC36FAA2CE93BAF008714E1 /* AWSLambda in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36FA92CE93BAF008714E1 /* AWSLambda */; };
+		5DC36FAC2CE93BAF008714E1 /* AWSLex in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36FAB2CE93BAF008714E1 /* AWSLex */; };
+		5DC36FAE2CE93BAF008714E1 /* AWSLocationXCF in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36FAD2CE93BAF008714E1 /* AWSLocationXCF */; };
+		5DC36FB02CE93BAF008714E1 /* AWSLogs in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36FAF2CE93BAF008714E1 /* AWSLogs */; };
+		5DC36FB22CE93BAF008714E1 /* AWSMachineLearning in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36FB12CE93BAF008714E1 /* AWSMachineLearning */; };
+		5DC36FB42CE93BAF008714E1 /* AWSMobileClientXCF in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36FB32CE93BAF008714E1 /* AWSMobileClientXCF */; };
+		5DC36FB62CE93BAF008714E1 /* AWSPinpoint in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36FB52CE93BAF008714E1 /* AWSPinpoint */; };
+		5DC36FB82CE93BAF008714E1 /* AWSPolly in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36FB72CE93BAF008714E1 /* AWSPolly */; };
+		5DC36FBA2CE93BAF008714E1 /* AWSRekognition in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36FB92CE93BAF008714E1 /* AWSRekognition */; };
+		5DC36FBC2CE93BAF008714E1 /* AWSS3 in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36FBB2CE93BAF008714E1 /* AWSS3 */; };
+		5DC36FBE2CE93BAF008714E1 /* AWSSES in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36FBD2CE93BAF008714E1 /* AWSSES */; };
+		5DC36FC02CE93BAF008714E1 /* AWSSNS in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36FBF2CE93BAF008714E1 /* AWSSNS */; };
+		5DC36FC22CE93BAF008714E1 /* AWSSQS in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36FC12CE93BAF008714E1 /* AWSSQS */; };
+		5DC36FC42CE93BAF008714E1 /* AWSSageMakerRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36FC32CE93BAF008714E1 /* AWSSageMakerRuntime */; };
+		5DC36FC62CE93BAF008714E1 /* AWSSimpleDB in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36FC52CE93BAF008714E1 /* AWSSimpleDB */; };
+		5DC36FC82CE93BAF008714E1 /* AWSTextract in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36FC72CE93BAF008714E1 /* AWSTextract */; };
+		5DC36FCA2CE93BAF008714E1 /* AWSTranscribe in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36FC92CE93BAF008714E1 /* AWSTranscribe */; };
+		5DC36FCC2CE93BAF008714E1 /* AWSTranscribeStreaming in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36FCB2CE93BAF008714E1 /* AWSTranscribeStreaming */; };
+		5DC36FCE2CE93BAF008714E1 /* AWSTranslate in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36FCD2CE93BAF008714E1 /* AWSTranslate */; };
+		5DC36FD02CE93BAF008714E1 /* AWSUserPoolsSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC36FCF2CE93BAF008714E1 /* AWSUserPoolsSignIn */; };
+		5DC36FD22CE93C8F008714E1 /* WorkoutSubcatViewController .swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC36FD12CE93C8D008714E1 /* WorkoutSubcatViewController .swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		441FF328FB927D89ED666EC0 /* Pods_Adf_Ready.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Adf_Ready.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BC4FBDE9DC319D56EE0B256 /* Pods-Adf Ready.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Adf Ready.debug.xcconfig"; path = "Target Support Files/Pods-Adf Ready/Pods-Adf Ready.debug.xcconfig"; sourceTree = "<group>"; };
+		56EB2773185FC8CCA28063E6 /* Pods-Adf Ready.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Adf Ready.release.xcconfig"; path = "Target Support Files/Pods-Adf Ready/Pods-Adf Ready.release.xcconfig"; sourceTree = "<group>"; };
+		5D4E123F2CE78205004E174F /* Adf Ready.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Adf Ready.entitlements"; sourceTree = "<group>"; };
+		5D4E12402CE78205004E174F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5D4E12422CE78220004E174F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5D4E12442CE7822E004E174F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5D4E12452CE7822E004E174F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5D4E12462CE7822E004E174F /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		5D4E12472CE7822E004E174F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		5D4E12482CE7822E004E174F /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		5D4E12522CE78B10004E174F /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5D4E12542CE78BCD004E174F /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		5D4E12552CE78BCD004E174F /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		5D4E12562CE78BCD004E174F /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		5D4E12572CE78BCD004E174F /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		5D4E125C2CE7ABCF004E174F /* WelcomeViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController2.swift; sourceTree = "<group>"; };
+		5D4E125E2CE7B6CC004E174F /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		5D4E12602CE7BD3D004E174F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		5D4E12622CE7BD62004E174F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		5D4E12642CE7C026004E174F /* UserTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTypeViewController.swift; sourceTree = "<group>"; };
+		5D4E12662CE7C1E6004E174F /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		5D4E12692CE7CD2C004E174F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5D4E126B2CE7CD7D004E174F /* MyExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyExtensions.swift; sourceTree = "<group>"; };
+		5D4E126D2CE7E566004E174F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		5D4E126F2CE7E5F9004E174F /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
+		5D4E12712CE7E85C004E174F /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
+		5D4E12732CE88F41004E174F /* WorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewController.swift; sourceTree = "<group>"; };
+		5D4E12752CE88FAF004E174F /* PFATestingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PFATestingViewController.swift; sourceTree = "<group>"; };
+		5D4E12772CE88FCD004E174F /* TheReadyHubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheReadyHubViewController.swift; sourceTree = "<group>"; };
+		5D4E12792CE88FF1004E174F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		5D4E127B2CE891BB004E174F /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		5D7514892CE7449500D337CA /* Adf Ready.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Adf Ready.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DC36F482CE8ADEE008714E1 /* FirebaseStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStoreManager.swift; sourceTree = "<group>"; };
+		5DC36F4A2CE9236E008714E1 /* ContinueAsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinueAsViewController.swift; sourceTree = "<group>"; };
+		5DC36F4C2CE92CC1008714E1 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
+		5DC36F4E2CE92F79008714E1 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
+		5DC36F502CE930EB008714E1 /* ContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentModel.swift; sourceTree = "<group>"; };
+		5DC36F522CE93111008714E1 /* MultiVideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiVideoModel.swift; sourceTree = "<group>"; };
+		5DC36F542CE9314D008714E1 /* MyTapGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTapGesture.swift; sourceTree = "<group>"; };
+		5DC36F562CE931B3008714E1 /* SubcategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubcategoryViewController.swift; sourceTree = "<group>"; };
+		5DC36F582CE93289008714E1 /* ViewContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewContentViewController.swift; sourceTree = "<group>"; };
+		5DC36F5A2CE932C9008714E1 /* ContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableViewCell.swift; sourceTree = "<group>"; };
+		5DC36F5D2CE93860008714E1 /* ReloadSubCatInterface .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReloadSubCatInterface .swift"; sourceTree = "<group>"; };
+		5DC36FD12CE93C8D008714E1 /* WorkoutSubcatViewController .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkoutSubcatViewController .swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		5D75149B2CE7449700D337CA /* Exceptions for "Adf Ready" folder in "Adf Ready" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = 5D7514882CE7449500D337CA /* Adf Ready */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		5D75148B2CE7449500D337CA /* Adf Ready */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				5D75149B2CE7449700D337CA /* Exceptions for "Adf Ready" folder in "Adf Ready" target */,
-			);
-			path = "Adf Ready";
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		5D7514862CE7449500D337CA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DC36FBE2CE93BAF008714E1 /* AWSSES in Frameworks */,
+				5DC36FA42CE93BAF008714E1 /* AWSKinesisVideoArchivedMedia in Frameworks */,
+				5DC36F9C2CE93BAF008714E1 /* AWSIoT in Frameworks */,
+				5DC36F7A2CE93BAF008714E1 /* AWSAuthUI in Frameworks */,
+				5DC36F742CE93BAF008714E1 /* AWSAPIGateway in Frameworks */,
+				5DC36F902CE93BAF008714E1 /* AWSCore in Frameworks */,
+				5DC36F8C2CE93BAF008714E1 /* AWSConnect in Frameworks */,
+				5DC36F922CE93BAF008714E1 /* AWSDynamoDB in Frameworks */,
+				360809806F154C9497592BCE /* Pods_Adf_Ready.framework in Frameworks */,
+				5DC36FA22CE93BAF008714E1 /* AWSKinesisVideo in Frameworks */,
+				5DC36FB62CE93BAF008714E1 /* AWSPinpoint in Frameworks */,
+				5DC36FC82CE93BAF008714E1 /* AWSTextract in Frameworks */,
+				5DC36FAA2CE93BAF008714E1 /* AWSLambda in Frameworks */,
+				5DC36F982CE93BAF008714E1 /* AWSFacebookSignIn in Frameworks */,
+				5DC36FA02CE93BAF008714E1 /* AWSKinesis in Frameworks */,
+				5DC36FAC2CE93BAF008714E1 /* AWSLex in Frameworks */,
+				5DC36F802CE93BAF008714E1 /* AWSChimeSDKMessaging in Frameworks */,
+				5DC36FCA2CE93BAF008714E1 /* AWSTranscribe in Frameworks */,
+				5DC36FA62CE93BAF008714E1 /* AWSKinesisVideoSignaling in Frameworks */,
+				5DC36FC42CE93BAF008714E1 /* AWSSageMakerRuntime in Frameworks */,
+				5DC36FAE2CE93BAF008714E1 /* AWSLocationXCF in Frameworks */,
+				5DC36F882CE93BAF008714E1 /* AWSCognitoIdentityProviderASF in Frameworks */,
+				5DC36FBA2CE93BAF008714E1 /* AWSRekognition in Frameworks */,
+				5DC36F9E2CE93BAF008714E1 /* AWSKMS in Frameworks */,
+				5DC36F612CE939DB008714E1 /* AWSAuthCore in Frameworks */,
+				5DC36F6F2CE939DB008714E1 /* AWSS3 in Frameworks */,
+				5DC36FC62CE93BAF008714E1 /* AWSSimpleDB in Frameworks */,
+				5DC36F822CE93BAF008714E1 /* AWSCloudWatch in Frameworks */,
+				5DC36FD02CE93BAF008714E1 /* AWSUserPoolsSignIn in Frameworks */,
+				5DC36FC22CE93BAF008714E1 /* AWSSQS in Frameworks */,
+				5DC36FC02CE93BAF008714E1 /* AWSSNS in Frameworks */,
+				5DC36F7C2CE93BAF008714E1 /* AWSAutoScaling in Frameworks */,
+				5DC36F692CE939DB008714E1 /* AWSLocationXCF in Frameworks */,
+				5DC36F6B2CE939DB008714E1 /* AWSLogs in Frameworks */,
+				5DC36FB82CE93BAF008714E1 /* AWSPolly in Frameworks */,
+				5DC36F962CE93BAF008714E1 /* AWSElasticLoadBalancing in Frameworks */,
+				5DC36F7E2CE93BAF008714E1 /* AWSChimeSDKIdentity in Frameworks */,
+				5DC36FB22CE93BAF008714E1 /* AWSMachineLearning in Frameworks */,
+				5DC36FBC2CE93BAF008714E1 /* AWSS3 in Frameworks */,
+				5DC36F942CE93BAF008714E1 /* AWSEC2 in Frameworks */,
+				5DC36F8E2CE93BAF008714E1 /* AWSConnectParticipant in Frameworks */,
+				5DC36F9A2CE93BAF008714E1 /* AWSGoogleSignIn in Frameworks */,
+				5DC36F862CE93BAF008714E1 /* AWSCognitoIdentityProvider in Frameworks */,
+				5DC36F8A2CE93BAF008714E1 /* AWSComprehend in Frameworks */,
+				5DC36FCE2CE93BAF008714E1 /* AWSTranslate in Frameworks */,
+				5DC36F6D2CE939DB008714E1 /* AWSMobileClientXCF in Frameworks */,
+				5DC36FA82CE93BAF008714E1 /* AWSKinesisVideoWebRTCStorage in Frameworks */,
+				5DC36F632CE939DB008714E1 /* AWSConnect in Frameworks */,
+				5DC36F652CE939DB008714E1 /* AWSCore in Frameworks */,
+				5DC36FB42CE93BAF008714E1 /* AWSMobileClientXCF in Frameworks */,
+				5DC36F842CE93BAF008714E1 /* AWSCognitoAuth in Frameworks */,
+				5DC36FB02CE93BAF008714E1 /* AWSLogs in Frameworks */,
+				5DC36F782CE93BAF008714E1 /* AWSAuthCore in Frameworks */,
+				5DC36F762CE93BAF008714E1 /* AWSAppleSignIn in Frameworks */,
+				5DC36FCC2CE93BAF008714E1 /* AWSTranscribeStreaming in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E237285DE011BA0223F7FEF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				441FF328FB927D89ED666EC0 /* Pods_Adf_Ready.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5D4E123E2CE781E3004E174F /* Adf Ready */ = {
+			isa = PBXGroup;
+			children = (
+				5D4E123F2CE78205004E174F /* Adf Ready.entitlements */,
+				5D4E12512CE789F6004E174F /* Model */,
+				5D4E12682CE7CCCD004E174F /* Util */,
+				5D4E12502CE789EB004E174F /* ViewController */,
+				5D4E124F2CE789E3004E174F /* View */,
+				5D4E124E2CE789D5004E174F /* Font */,
+				5D4E12472CE7822E004E174F /* SceneDelegate.swift */,
+				5D4E12402CE78205004E174F /* AppDelegate.swift */,
+				5D4E12522CE78B10004E174F /* GoogleService-Info.plist */,
+				5D4E12442CE7822E004E174F /* Info.plist */,
+			);
+			path = "Adf Ready";
+			sourceTree = "<group>";
+		};
+		5D4E124E2CE789D5004E174F /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				5D4E12542CE78BCD004E174F /* Roboto-Bold.ttf */,
+				5D4E12552CE78BCD004E174F /* Roboto-Light.ttf */,
+				5D4E12562CE78BCD004E174F /* Roboto-Medium.ttf */,
+				5D4E12572CE78BCD004E174F /* Roboto-Regular.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		5D4E124F2CE789E3004E174F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5DC36F5A2CE932C9008714E1 /* ContentTableViewCell.swift */,
+				5DC36F4C2CE92CC1008714E1 /* CategoryTableViewCell.swift */,
+				5D4E127B2CE891BB004E174F /* CustomTextField.swift */,
+				5D4E12662CE7C1E6004E174F /* RoundedView.swift */,
+				5D4E12422CE78220004E174F /* Assets.xcassets */,
+				5D4E12452CE7822E004E174F /* LaunchScreen.storyboard */,
+				5D4E12462CE7822E004E174F /* Main.storyboard */,
+				5D4E125E2CE7B6CC004E174F /* RoundedButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5D4E12502CE789EB004E174F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5DC36FD12CE93C8D008714E1 /* WorkoutSubcatViewController .swift */,
+				5DC36F582CE93289008714E1 /* ViewContentViewController.swift */,
+				5DC36F562CE931B3008714E1 /* SubcategoryViewController.swift */,
+				5DC36F4A2CE9236E008714E1 /* ContinueAsViewController.swift */,
+				5D4E12792CE88FF1004E174F /* ProfileViewController.swift */,
+				5D4E12772CE88FCD004E174F /* TheReadyHubViewController.swift */,
+				5D4E12752CE88FAF004E174F /* PFATestingViewController.swift */,
+				5D4E12732CE88F41004E174F /* WorkoutViewController.swift */,
+				5D4E12712CE7E85C004E174F /* InformationViewController.swift */,
+				5D4E126F2CE7E5F9004E174F /* TabbarViewController.swift */,
+				5D4E12482CE7822E004E174F /* WelcomeViewController.swift */,
+				5D4E125C2CE7ABCF004E174F /* WelcomeViewController2.swift */,
+				5D4E12602CE7BD3D004E174F /* SignInViewController.swift */,
+				5D4E12622CE7BD62004E174F /* SignUpViewController.swift */,
+				5D4E12642CE7C026004E174F /* UserTypeViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		5D4E12512CE789F6004E174F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5DC36F522CE93111008714E1 /* MultiVideoModel.swift */,
+				5DC36F502CE930EB008714E1 /* ContentModel.swift */,
+				5D4E126D2CE7E566004E174F /* UserModel.swift */,
+				5DC36F4E2CE92F79008714E1 /* CategoryModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5D4E12682CE7CCCD004E174F /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				5DC36F5D2CE93860008714E1 /* ReloadSubCatInterface .swift */,
+				5DC36F542CE9314D008714E1 /* MyTapGesture.swift */,
+				5DC36F482CE8ADEE008714E1 /* FirebaseStoreManager.swift */,
+				5D4E126B2CE7CD7D004E174F /* MyExtensions.swift */,
+				5D4E12692CE7CD2C004E174F /* Constants.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		5D7514802CE7449500D337CA = {
 			isa = PBXGroup;
 			children = (
-				5D75148B2CE7449500D337CA /* Adf Ready */,
+				5D4E123E2CE781E3004E174F /* Adf Ready */,
 				5D75148A2CE7449500D337CA /* Products */,
+				DD1CAC70F99AEB1733C71C9C /* Pods */,
+				4E237285DE011BA0223F7FEF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +331,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		DD1CAC70F99AEB1733C71C9C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4BC4FBDE9DC319D56EE0B256 /* Pods-Adf Ready.debug.xcconfig */,
+				56EB2773185FC8CCA28063E6 /* Pods-Adf Ready.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -65,20 +347,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5D75149C2CE7449700D337CA /* Build configuration list for PBXNativeTarget "Adf Ready" */;
 			buildPhases = (
+				CF095B8C2677A446E6546F45 /* [CP] Check Pods Manifest.lock */,
 				5D7514852CE7449500D337CA /* Sources */,
 				5D7514862CE7449500D337CA /* Frameworks */,
 				5D7514872CE7449500D337CA /* Resources */,
+				D50E0433C9FBCB9C89744BC6 /* [CP] Embed Pods Frameworks */,
+				465E024C9C95787EBF4B902B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				5D75148B2CE7449500D337CA /* Adf Ready */,
-			);
 			name = "Adf Ready";
-			packageProductDependencies = (
-			);
 			productName = "Adf Ready";
 			productReference = 5D7514892CE7449500D337CA /* Adf Ready.app */;
 			productType = "com.apple.product-type.application";
@@ -95,6 +375,7 @@
 				TargetAttributes = {
 					5D7514882CE7449500D337CA = {
 						CreatedOnToolsVersion = 16.1;
+						LastSwiftMigration = 1610;
 					};
 				};
 			};
@@ -107,6 +388,9 @@
 			);
 			mainGroup = 5D7514802CE7449500D337CA;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5D75148A2CE7449500D337CA /* Products */;
 			projectDirPath = "";
@@ -122,16 +406,114 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D4E12492CE7822E004E174F /* LaunchScreen.storyboard in Resources */,
+				5D4E12582CE78BCD004E174F /* Roboto-Bold.ttf in Resources */,
+				5D4E12592CE78BCD004E174F /* Roboto-Light.ttf in Resources */,
+				5D4E125A2CE78BCD004E174F /* Roboto-Medium.ttf in Resources */,
+				5D4E125B2CE78BCD004E174F /* Roboto-Regular.ttf in Resources */,
+				5D4E124B2CE7822E004E174F /* Main.storyboard in Resources */,
+				5D4E12432CE78220004E174F /* Assets.xcassets in Resources */,
+				5D4E12532CE78B10004E174F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		465E024C9C95787EBF4B902B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Adf Ready/Pods-Adf Ready-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Adf Ready/Pods-Adf Ready-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Adf Ready/Pods-Adf Ready-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CF095B8C2677A446E6546F45 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Adf Ready-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D50E0433C9FBCB9C89744BC6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Adf Ready/Pods-Adf Ready-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Adf Ready/Pods-Adf Ready-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Adf Ready/Pods-Adf Ready-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5D7514852CE7449500D337CA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D4E125D2CE7ABCF004E174F /* WelcomeViewController2.swift in Sources */,
+				5DC36F4B2CE9237C008714E1 /* ContinueAsViewController.swift in Sources */,
+				5D4E12632CE7BD62004E174F /* SignUpViewController.swift in Sources */,
+				5DC36F5E2CE93862008714E1 /* ReloadSubCatInterface .swift in Sources */,
+				5D4E12722CE7E85E004E174F /* InformationViewController.swift in Sources */,
+				5D4E12782CE88FD6004E174F /* TheReadyHubViewController.swift in Sources */,
+				5D4E12672CE7C1E9004E174F /* RoundedView.swift in Sources */,
+				5DC36F4F2CE930A5008714E1 /* CategoryModel.swift in Sources */,
+				5DC36F592CE9328B008714E1 /* ViewContentViewController.swift in Sources */,
+				5D4E127C2CE891C2004E174F /* CustomTextField.swift in Sources */,
+				5D4E12702CE7E5FC004E174F /* TabbarViewController.swift in Sources */,
+				5D4E127A2CE88FFA004E174F /* ProfileViewController.swift in Sources */,
+				5D4E125F2CE7B6D2004E174F /* RoundedButton.swift in Sources */,
+				5D4E12612CE7BD3D004E174F /* SignInViewController.swift in Sources */,
+				5DC36F492CE8ADF7008714E1 /* FirebaseStoreManager.swift in Sources */,
+				5D4E126A2CE7CD31004E174F /* Constants.swift in Sources */,
+				5D4E126C2CE7CD83004E174F /* MyExtensions.swift in Sources */,
+				5D4E12412CE78205004E174F /* AppDelegate.swift in Sources */,
+				5D4E124C2CE7822E004E174F /* WelcomeViewController.swift in Sources */,
+				5DC36FD22CE93C8F008714E1 /* WorkoutSubcatViewController .swift in Sources */,
+				5DC36F512CE930F0008714E1 /* ContentModel.swift in Sources */,
+				5DC36F532CE9311A008714E1 /* MultiVideoModel.swift in Sources */,
+				5D4E124D2CE7822E004E174F /* SceneDelegate.swift in Sources */,
+				5DC36F4D2CE92CC6008714E1 /* CategoryTableViewCell.swift in Sources */,
+				5D4E12742CE88F4F004E174F /* WorkoutViewController.swift in Sources */,
+				5D4E12762CE88FB9004E174F /* PFATestingViewController.swift in Sources */,
+				5DC36F5B2CE932CC008714E1 /* ContentTableViewCell.swift in Sources */,
+				5DC36F552CE93151008714E1 /* MyTapGesture.swift in Sources */,
+				5D4E126E2CE7E56A004E174F /* UserModel.swift in Sources */,
+				5D4E12652CE7C026004E174F /* UserTypeViewController.swift in Sources */,
+				5DC36F572CE931C4008714E1 /* SubcategoryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,27 +522,37 @@
 /* Begin XCBuildConfiguration section */
 		5D75149D2CE7449700D337CA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4BC4FBDE9DC319D56EE0B256 /* Pods-Adf Ready.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Adf Ready/Adf Ready.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = EC9SN5W46D;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Adf Ready/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "ADF Ready";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.softment.Adf-Ready";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -168,24 +560,33 @@
 		};
 		5D75149E2CE7449700D337CA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56EB2773185FC8CCA28063E6 /* Pods-Adf Ready.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Adf Ready/Adf Ready.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = EC9SN5W46D;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Adf Ready/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "ADF Ready";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.softment.Adf-Ready";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -335,6 +736,298 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5DC36F5F2CE939DB008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aws-amplify/aws-sdk-ios-spm";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.37.2;
+			};
+		};
+		5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aws-amplify/aws-sdk-ios-spm";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.37.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5DC36F602CE939DB008714E1 /* AWSAuthCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F5F2CE939DB008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSAuthCore;
+		};
+		5DC36F622CE939DB008714E1 /* AWSConnect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F5F2CE939DB008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSConnect;
+		};
+		5DC36F642CE939DB008714E1 /* AWSCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F5F2CE939DB008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSCore;
+		};
+		5DC36F682CE939DB008714E1 /* AWSLocationXCF */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F5F2CE939DB008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSLocationXCF;
+		};
+		5DC36F6A2CE939DB008714E1 /* AWSLogs */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F5F2CE939DB008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSLogs;
+		};
+		5DC36F6C2CE939DB008714E1 /* AWSMobileClientXCF */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F5F2CE939DB008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSMobileClientXCF;
+		};
+		5DC36F6E2CE939DB008714E1 /* AWSS3 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F5F2CE939DB008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSS3;
+		};
+		5DC36F732CE93BAF008714E1 /* AWSAPIGateway */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSAPIGateway;
+		};
+		5DC36F752CE93BAF008714E1 /* AWSAppleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSAppleSignIn;
+		};
+		5DC36F772CE93BAF008714E1 /* AWSAuthCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSAuthCore;
+		};
+		5DC36F792CE93BAF008714E1 /* AWSAuthUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSAuthUI;
+		};
+		5DC36F7B2CE93BAF008714E1 /* AWSAutoScaling */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSAutoScaling;
+		};
+		5DC36F7D2CE93BAF008714E1 /* AWSChimeSDKIdentity */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSChimeSDKIdentity;
+		};
+		5DC36F7F2CE93BAF008714E1 /* AWSChimeSDKMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSChimeSDKMessaging;
+		};
+		5DC36F812CE93BAF008714E1 /* AWSCloudWatch */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSCloudWatch;
+		};
+		5DC36F832CE93BAF008714E1 /* AWSCognitoAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSCognitoAuth;
+		};
+		5DC36F852CE93BAF008714E1 /* AWSCognitoIdentityProvider */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSCognitoIdentityProvider;
+		};
+		5DC36F872CE93BAF008714E1 /* AWSCognitoIdentityProviderASF */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSCognitoIdentityProviderASF;
+		};
+		5DC36F892CE93BAF008714E1 /* AWSComprehend */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSComprehend;
+		};
+		5DC36F8B2CE93BAF008714E1 /* AWSConnect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSConnect;
+		};
+		5DC36F8D2CE93BAF008714E1 /* AWSConnectParticipant */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSConnectParticipant;
+		};
+		5DC36F8F2CE93BAF008714E1 /* AWSCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSCore;
+		};
+		5DC36F912CE93BAF008714E1 /* AWSDynamoDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSDynamoDB;
+		};
+		5DC36F932CE93BAF008714E1 /* AWSEC2 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSEC2;
+		};
+		5DC36F952CE93BAF008714E1 /* AWSElasticLoadBalancing */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSElasticLoadBalancing;
+		};
+		5DC36F972CE93BAF008714E1 /* AWSFacebookSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSFacebookSignIn;
+		};
+		5DC36F992CE93BAF008714E1 /* AWSGoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSGoogleSignIn;
+		};
+		5DC36F9B2CE93BAF008714E1 /* AWSIoT */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSIoT;
+		};
+		5DC36F9D2CE93BAF008714E1 /* AWSKMS */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSKMS;
+		};
+		5DC36F9F2CE93BAF008714E1 /* AWSKinesis */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSKinesis;
+		};
+		5DC36FA12CE93BAF008714E1 /* AWSKinesisVideo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSKinesisVideo;
+		};
+		5DC36FA32CE93BAF008714E1 /* AWSKinesisVideoArchivedMedia */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSKinesisVideoArchivedMedia;
+		};
+		5DC36FA52CE93BAF008714E1 /* AWSKinesisVideoSignaling */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSKinesisVideoSignaling;
+		};
+		5DC36FA72CE93BAF008714E1 /* AWSKinesisVideoWebRTCStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSKinesisVideoWebRTCStorage;
+		};
+		5DC36FA92CE93BAF008714E1 /* AWSLambda */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSLambda;
+		};
+		5DC36FAB2CE93BAF008714E1 /* AWSLex */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSLex;
+		};
+		5DC36FAD2CE93BAF008714E1 /* AWSLocationXCF */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSLocationXCF;
+		};
+		5DC36FAF2CE93BAF008714E1 /* AWSLogs */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSLogs;
+		};
+		5DC36FB12CE93BAF008714E1 /* AWSMachineLearning */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSMachineLearning;
+		};
+		5DC36FB32CE93BAF008714E1 /* AWSMobileClientXCF */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSMobileClientXCF;
+		};
+		5DC36FB52CE93BAF008714E1 /* AWSPinpoint */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSPinpoint;
+		};
+		5DC36FB72CE93BAF008714E1 /* AWSPolly */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSPolly;
+		};
+		5DC36FB92CE93BAF008714E1 /* AWSRekognition */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSRekognition;
+		};
+		5DC36FBB2CE93BAF008714E1 /* AWSS3 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSS3;
+		};
+		5DC36FBD2CE93BAF008714E1 /* AWSSES */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSSES;
+		};
+		5DC36FBF2CE93BAF008714E1 /* AWSSNS */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSSNS;
+		};
+		5DC36FC12CE93BAF008714E1 /* AWSSQS */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSSQS;
+		};
+		5DC36FC32CE93BAF008714E1 /* AWSSageMakerRuntime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSSageMakerRuntime;
+		};
+		5DC36FC52CE93BAF008714E1 /* AWSSimpleDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSSimpleDB;
+		};
+		5DC36FC72CE93BAF008714E1 /* AWSTextract */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSTextract;
+		};
+		5DC36FC92CE93BAF008714E1 /* AWSTranscribe */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSTranscribe;
+		};
+		5DC36FCB2CE93BAF008714E1 /* AWSTranscribeStreaming */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSTranscribeStreaming;
+		};
+		5DC36FCD2CE93BAF008714E1 /* AWSTranslate */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSTranslate;
+		};
+		5DC36FCF2CE93BAF008714E1 /* AWSUserPoolsSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC36F722CE93BAF008714E1 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
+			productName = AWSUserPoolsSignIn;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5D7514812CE7449500D337CA /* Project object */;
 }
