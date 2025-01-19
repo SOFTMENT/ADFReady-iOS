@@ -31,8 +31,7 @@ SD_LOCK_DECLARE_STATIC(_providerFramePoolMapLock);
     static NSMapTable *providerFramePoolMap;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        // Key use `hash` && `isEqual:`
-        providerFramePoolMap = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsStrongMemory | NSPointerFunctionsObjectPersonality valueOptions:NSPointerFunctionsStrongMemory | NSPointerFunctionsObjectPointerPersonality];
+        providerFramePoolMap = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsStrongMemory | NSPointerFunctionsObjectPointerPersonality valueOptions:NSPointerFunctionsStrongMemory | NSPointerFunctionsObjectPointerPersonality];
     });
     return providerFramePoolMap;
 }

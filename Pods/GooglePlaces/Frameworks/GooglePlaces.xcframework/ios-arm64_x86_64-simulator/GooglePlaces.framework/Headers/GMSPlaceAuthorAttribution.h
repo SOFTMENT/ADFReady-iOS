@@ -14,7 +14,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/** A class representing an author attribution. */
 @interface GMSPlaceAuthorAttribution : NSObject
 
 /** Returns the |GMSPlaceAuthorAttribution| with a name, URI, and author photoURI. */

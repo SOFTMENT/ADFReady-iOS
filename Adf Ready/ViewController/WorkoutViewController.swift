@@ -20,21 +20,10 @@ class WorkoutViewController : UIViewController {
         tableView.delegate = self
         
         
-        
-        let accountType = checkUserOrNavy()
-      
-     
-            
-            var catName = "Workouts"
-            if accountType == "user" {
-                 catName = "Workouts"
-            }
-            else {
-                catName = "AdminWorkouts"
-            }
+        tableView.showsVerticalScrollIndicator = false
             
             ProgressHUDShow(text: "")
-            self.getAllCategory(type:catName) { categories in
+        self.getAllCategory(type:"\(UserModel.data!.service!)Workouts") { categories in
                 self.ProgressHUDHide()
                 self.categoryModels.removeAll()
                 self.categoryModels.append(contentsOf: categories ?? [])
@@ -49,37 +38,43 @@ class WorkoutViewController : UIViewController {
     
     @objc func cellClicked(gest : MyTapGesture){
         
-      
-        if checkUserOrNavy() == "user" {
-            self.performSegue(withIdentifier: "workoutSubCatSeg", sender: self.categoryModels[gest.index])
-            
+        let categoryModel = categoryModels[gest.index]
+        if let isItGym = categoryModel.isItGymCategory, isItGym {
+            self.performSegue(withIdentifier: "myworkoutSeg", sender: self.categoryModels[gest.index])
+         
         }
         else {
             self.performSegue(withIdentifier: "subCatSeg", sender: self.categoryModels[gest.index])
         }
+        
+            
+        
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "workoutSubCatSeg" {
+        if segue.identifier == "myworkoutSeg" {
           
-                if let VC = segue.destination as? SubcategoryViewController {
+            if let VC = segue.destination as? MyWorkoutViewController {
                     if let category = sender as? CategoryModel {
                         VC.catId = category.id
                         VC.catName = category.title
-                        VC.type = checkUserOrNavy() == "user" ? "Workouts" : "AdminWorkouts"
+                        VC.type = "\(UserModel.data!.service!)Workouts"
                     }
                 }
             
         }
         else if segue.identifier == "subCatSeg" {
-            if let VC = segue.destination as? WorkoutSubcatViewController {
+            if let VC = segue.destination as? SubcategoryViewController  {
                 if let category = sender as? CategoryModel {
                     VC.catId = category.id
-                    VC.catNameString = category.title
-                   
+                    VC.catName = category.title
+                    VC.type = "\(UserModel.data!.service!)Workouts"
+                    
                 }
             }
         }
+ 
+    
         
     }
     
@@ -97,10 +92,7 @@ extension  WorkoutViewController : UITableViewDelegate, UITableViewDataSource {
             
             let subCatModel = categoryModels[indexPath.row]
             cell.mView.layer.cornerRadius = 8
-            cell.mImage.layer.cornerRadius = 6
-            if let path = subCatModel.image, !path.isEmpty {
-                cell.mImage.sd_setImage(with: URL(string: path), placeholderImage: UIImage(named: "placeholder"))
-            }
+            
             cell.mTitle.text = subCatModel.title ?? ""
             cell.mDesc.text = subCatModel.desc ?? ""
             

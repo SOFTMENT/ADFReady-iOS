@@ -27,7 +27,6 @@ typedef NS_ENUM(NSInteger, GMSPlaceSearchNearbyRankPreference) {
 
 NS_ASSUME_NONNULL_BEGIN
 
-/** Request object to use with |GMSPlacesClient| to fetch nearby places. */
 @interface GMSPlaceSearchNearbyRequest : NSObject
 
 /**

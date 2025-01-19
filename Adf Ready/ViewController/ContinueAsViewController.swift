@@ -12,7 +12,9 @@ class ContinueAsViewController : UIViewController {
     
     @IBOutlet weak var preJoinerView: RoundedView!
     
+    @IBOutlet weak var armyView: RoundedView!
     
+    @IBOutlet weak var airForceView: RoundedView!
     @IBOutlet weak var navyView: RoundedView!
     
     override func viewDidLoad() {
@@ -21,26 +23,29 @@ class ContinueAsViewController : UIViewController {
         
         navyView.isUserInteractionEnabled = true
         navyView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(navyMemberClicked)))
+        
+        armyView.isUserInteractionEnabled = true
+        armyView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(commingSoonClicked)))
+        
+        airForceView.isUserInteractionEnabled = true
+        airForceView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(commingSoonClicked)))
     }
+    
+    
+    
+    
+    @objc func commingSoonClicked() {
+        self.showToast(message: "Coming Soon...")
+    }
+    
+    
     
     @objc func preJoinerClicked() {
         performSegue(withIdentifier: "signInSeg", sender: nil)
     }
     
     @objc func navyMemberClicked() {
-        // Replace with the URL scheme of the Navy app if available
-        let appURL = URL(string: "navyfitness://")!
-        
-        // App Store fallback URL
-        let appStoreURL = URL(string: "https://apps.apple.com/in/app/royal-australian-navy-fitness/id6469463262")!
-        
-        if UIApplication.shared.canOpenURL(appURL) {
-            // Open the app
-            UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
-        } else {
-            // Redirect to App Store
-            UIApplication.shared.open(appStoreURL, options: [:], completionHandler: nil)
-        }
+        self.beRootScreen(mIdentifier: Constants.StroyBoard.video1ViewController)
 
     }
     

@@ -52,17 +52,28 @@ class SubcategoryViewController : UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        
+        tableView.showsVerticalScrollIndicator = false
         
         
         ProgressHUDShow(text: "")
-        self.getAllSubCategory(type: type, catId: catId, subId: self.subId) { contentModels in
-            self.ProgressHUDHide()
-            self.contentModels.removeAll()
-            self.contentModels.append(contentsOf: contentModels ?? [])
-            self.tableView.reloadData()
-            
+        if let subId = subId, !subId.isEmpty {
+            self.getAllRoyalSubCategory(type: type, catId: catId, subId: subId, completion: { contentModels in
+                self.ProgressHUDHide()
+                self.contentModels.removeAll()
+                self.contentModels.append(contentsOf: contentModels ?? [])
+                self.tableView.reloadData()
+            })
         }
+        else {
+            self.getAllSubCategory(type: type, catId: catId) { contentModels in
+                self.ProgressHUDHide()
+                self.contentModels.removeAll()
+                self.contentModels.append(contentsOf: contentModels ?? [])
+                self.tableView.reloadData()
+                
+            }
+        }
+    
         
     }
    
@@ -73,7 +84,7 @@ class SubcategoryViewController : UIViewController {
                     VC.contentModels = contentModels
                     VC.position = index
                     VC.type = self.type
-                    VC.delegate = self
+                   
                 }
             }
         }
@@ -99,51 +110,33 @@ extension SubcategoryViewController : UITableViewDelegate, UITableViewDataSource
             
             let contentModel = contentModels[indexPath.row]
             cell.mView.layer.cornerRadius = 8
-            cell.mImage.layer.cornerRadius = 6
-            if let path = contentModel.image, !path.isEmpty {
-                cell.mImage.sd_setImage(with: URL(string: path), placeholderImage: UIImage(named: "placeholder"))
-            }
+           
             cell.mTitle.text = contentModel.title ?? ""
            
-            cell.pdfImage.isHidden = true
-            cell.videoStack.isHidden = true
-            
-            if contentModel.pdfLink != nil {
-                cell.pdfImage.isHidden = false
-            }
-          
-            if let count = contentModel.videoCount, count > 0 {
-            
-                 
-                    cell.videoStack.isHidden = false
-                    cell.duration.text = count > 1 ? "\(count) videos" : "\(count) video"
-              
-            }
-          
-           
-            
-            getAllVideos(type: type!, catId: catId!, subId: self.subId, subCatId: contentModel.id!) { contents in
-                 contentModel.multiVideoModels = Array<MultiVideoModel>()
-                 contentModel.multiVideoModels?.append(contentsOf: contents ?? [])
-                 
-            
-                 
-                 if let contents = contents {
-                    
-                     for multiVideo in contents {
+      
+            self.ProgressHUDShow(text: "")
+            if let subId = subId, !subId.isEmpty {
+                getAllVideosGymWorkout(type: type!, catId: catId!, sId: subId, subCatId: contentModel.id!) { contents in
                   
-                         if let url  = URL(string: Constants.AWS_BASE_URL+"/"+multiVideo.videoURL!) {
-                             
+                    self.ProgressHUDHide()
+
+                     contentModel.multiVideoModels = Array<MultiVideoModel>()
+                     contentModel.multiVideoModels?.append(contentsOf: contents ?? [])
+                    
+                }
                 
-                             
-                             if SDImageCache.shared.diskImageData(forKey: url.absoluteString) == nil {
-                                 self.downloadMP4File(from: url)
-                             }
-                         }
+            }else {
+                getAllVideos(type: type!, catId: catId!, subCatId: contentModel.id!) { contents in
+                    self.ProgressHUDHide()
+                     contentModel.multiVideoModels = Array<MultiVideoModel>()
+                     contentModel.multiVideoModels?.append(contentsOf: contents ?? [])
                         
-                     }
+                
+                     
+                 
                  }
-             }
+                
+            }
             
             
             

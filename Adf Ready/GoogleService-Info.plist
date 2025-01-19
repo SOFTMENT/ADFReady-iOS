@@ -9,7 +9,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.softment.Adf-Ready</string>
+	<string>au.gov.defence.Adf-Ready</string>
 	<key>PROJECT_ID</key>
 	<string>adf-ready</string>
 	<key>STORAGE_BUCKET</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:747286810435:ios:d9b1b0ec32565ddd12e9f6</string>
+	<string>1:747286810435:ios:2744ca73ca9e3f0212e9f6</string>
 </dict>
 </plist>

@@ -15,7 +15,9 @@ class TabbarViewController: UIViewController {
     // Outlets for tab bar buttons and images
     @IBOutlet var pageView: UIView!
     @IBOutlet weak var workoutImage: UIImageView!
+  
     
+  
     @IBOutlet weak var infoImage: UIImageView!
     
     @IBOutlet weak var playImage: UIImageView!
@@ -31,6 +33,7 @@ class TabbarViewController: UIViewController {
         let workoutVC = UIStoryboard.load("workoutVC") as! WorkoutViewController
         let PFAVC = UIStoryboard.load("pfaVC") as! PFATestingViewController
         let theReadyVC = UIStoryboard.load("readyVC") as! TheReadyHubViewController
+       
         let profileVC = UIStoryboard.load("profileVC") as! ProfileViewController
         
 
@@ -97,6 +100,7 @@ class TabbarViewController: UIViewController {
             #selector(workoutClicked),
             #selector(pfaClicked),
             #selector(theReadyClicked),
+          
             #selector(profileClicked),
           
         ]
@@ -127,9 +131,10 @@ class TabbarViewController: UIViewController {
         
     }
 
+   
     @objc func profileClicked() {
        
-          //  switchToViewController(at: 4)
+           switchToViewController(at: 4)
       
     }
 
@@ -158,6 +163,7 @@ class TabbarViewController: UIViewController {
         case 3:
           
             pageViewController.setViewControllers([viewControllers[3]], direction: Constants.selectedTabBarPosition > 3 ? .reverse : .forward, animated: true)
+       
         case 4:
           
            

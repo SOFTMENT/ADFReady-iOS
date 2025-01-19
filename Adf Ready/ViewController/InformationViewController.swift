@@ -19,17 +19,10 @@ class InformationViewController : UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
     
-        let accountType = checkUserOrNavy()
-            var catName = "Informations"
-            if accountType == "user" {
-                 catName = "Informations"
-            }
-            else {
-                catName = "AdminInformations"
-            }
+        tableView.showsVerticalScrollIndicator = false
             
             ProgressHUDShow(text: "")
-            self.getAllCategory(type: catName) { categories in
+        self.getAllCategory(type: "\(UserModel.data!.service!)Informations") { categories in
                 self.ProgressHUDHide()
                 self.categoryModels.removeAll()
                 self.categoryModels.append(contentsOf: categories ?? [])
@@ -56,7 +49,7 @@ class InformationViewController : UIViewController {
                 if let category = sender as? CategoryModel {
                     VC.catId = category.id
                     VC.catName = category.title
-                    VC.type = checkUserOrNavy() == "user" ? "Informations" : "AdminInformations"
+                    VC.type = "\(UserModel.data!.service!)Informations"
                     
                 }
             }
@@ -78,10 +71,7 @@ extension InformationViewController : UITableViewDelegate, UITableViewDataSource
             
             let subCatModel = categoryModels[indexPath.row]
             cell.mView.layer.cornerRadius = 8
-            cell.mImage.layer.cornerRadius = 6
-            if let path = subCatModel.image, !path.isEmpty {
-                cell.mImage.sd_setImage(with: URL(string: path), placeholderImage: UIImage(named: "placeholder"))
-            }
+           
             cell.mTitle.text = subCatModel.title ?? ""
             cell.mDesc.text = subCatModel.desc ?? ""
             

@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "black-and-white-chat-bubbles.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "black-and-white-chat-bubbles@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "black-and-white-chat-bubbles@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

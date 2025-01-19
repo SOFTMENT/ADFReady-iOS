@@ -3,44 +3,44 @@
 //  https://github.com/hackiftekhar/IQKeyboardManager
 //  Copyright (c) 2013-24 Iftekhar Qurashi.
 //
-//  Permission is hereby granted, free of charge, to any person obtaining a copy
-//  of this software and associated documentation files (the "Software"), to deal
-//  in the Software without restriction, including without limitation the rights
-//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-//  copies of the Software, and to permit persons to whom the Software is
-//  furnished to do so, subject to the following conditions:
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
 //
-//  The above copyright notice and this permission notice shall be included in
-//  all copies or substantial portions of the Software.
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
 //
-//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-//  THE SOFTWARE.
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
 
 import UIKit
 
 /** @abstract UITextView with placeholder support   */
 @available(iOSApplicationExtension, unavailable)
 @MainActor
-@objcMembers open class IQTextView: UITextView {
+@objc open class IQTextView: UITextView {
 
-    required public init?(coder aDecoder: NSCoder) {
+    @objc required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         NotificationCenter.default.addObserver(self, selector: #selector(self.refreshPlaceholder),
                                                name: UITextView.textDidChangeNotification, object: self)
     }
 
-    override public init(frame: CGRect, textContainer: NSTextContainer?) {
+    @objc override public init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
         NotificationCenter.default.addObserver(self, selector: #selector(self.refreshPlaceholder),
                                                name: UITextView.textDidChangeNotification, object: self)
     }
 
-    override open func awakeFromNib() {
+    @objc override open func awakeFromNib() {
         super.awakeFromNib()
         NotificationCenter.default.addObserver(self, selector: #selector(self.refreshPlaceholder),
                                                name: UITextView.textDidChangeNotification, object: self)
@@ -117,7 +117,7 @@ import UIKit
         }
     }
 
-    override open func layoutSubviews() {
+    @objc override open func layoutSubviews() {
         super.layoutSubviews()
 
         placeholderLabel.frame = placeholderExpectedFrame
@@ -126,10 +126,14 @@ import UIKit
     @objc private func refreshPlaceholder() {
 
         let text: String = text ?? attributedText?.string ?? ""
-        placeholderLabel.alpha = text.isEmpty ? 1 : 0
+        if text.isEmpty {
+            placeholderLabel.alpha = 1
+        } else {
+            placeholderLabel.alpha = 0
+        }
     }
 
-    override open var text: String! {
+    @objc override open var text: String! {
 
         didSet {
             refreshPlaceholder()
@@ -143,25 +147,25 @@ import UIKit
         }
     }
 
-    override open var font: UIFont? {
+    @objc override open var font: UIFont? {
 
         didSet {
 
-            if let font: UIFont = font {
-                placeholderLabel.font = font
+            if let unwrappedFont: UIFont = font {
+                placeholderLabel.font = unwrappedFont
             } else {
                 placeholderLabel.font = UIFont.systemFont(ofSize: 12)
             }
         }
     }
 
-    override open var textAlignment: NSTextAlignment {
+    @objc override open var textAlignment: NSTextAlignment {
         didSet {
             placeholderLabel.textAlignment = textAlignment
         }
     }
 
-    override weak open var delegate: (any UITextViewDelegate)? {
+    @objc override weak open var delegate: (any UITextViewDelegate)? {
 
         get {
             refreshPlaceholder()
@@ -173,7 +177,7 @@ import UIKit
         }
     }
 
-    override open var intrinsicContentSize: CGSize {
+    @objc override open var intrinsicContentSize: CGSize {
         guard !hasText else {
             return super.intrinsicContentSize
         }
@@ -185,24 +189,20 @@ import UIKit
         return newSize
     }
 
-    override open func caretRect(for position: UITextPosition) -> CGRect {
+    @objc override open func caretRect(for position: UITextPosition) -> CGRect {
         var originalRect = super.caretRect(for: position)
 
         // When placeholder is visible and text alignment is centered
-        guard placeholderLabel.alpha == 1 && self.textAlignment == .center else { return originalRect }
-
-        // Calculate the width of the placeholder text
-        let font = placeholderLabel.font ?? UIFont.systemFont(ofSize: UIFont.systemFontSize)
-        let textSize = placeholderLabel.text?.size(withAttributes: [.font: font]) ?? .zero
-        // Calculate the starting x position of the centered placeholder text
-        let centeredTextX = (self.bounds.size.width - textSize.width) / 2
-        // Update the caret position to match the starting x position of the centered text
-        originalRect.origin.x = centeredTextX
+        if placeholderLabel.alpha == 1 && self.textAlignment == .center {
+            // Calculate the width of the placeholder text
+            let font = placeholderLabel.font ?? UIFont.systemFont(ofSize: UIFont.systemFontSize)
+            let textSize = placeholderLabel.text?.size(withAttributes: [.font: font]) ?? .zero
+            // Calculate the starting x position of the centered placeholder text
+            let centeredTextX = (self.bounds.size.width - textSize.width) / 2
+            // Update the caret position to match the starting x position of the centered text
+            originalRect.origin.x = centeredTextX
+        }
 
         return originalRect
     }
 }
-
-@available(iOSApplicationExtension, unavailable)
-@MainActor
-@objc extension IQTextView: IQPlaceholderable { }

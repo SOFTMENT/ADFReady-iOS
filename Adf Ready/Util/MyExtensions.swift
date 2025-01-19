@@ -22,6 +22,7 @@ import PassKit
 import FirebaseFunctions
 import SDWebImage
 import AVFoundation
+import AWSS3
 
 
 
@@ -92,7 +93,7 @@ extension UITextField {
     func setRightIcons(icon: UIImage) {
         
         let padding = 8
-        let size = 16
+        let size = 18
         
         let outerView = UIView(frame: CGRect(x: 0, y: 0, width: size+padding, height: size) )
         let iconView  = UIImageView(frame: CGRect(x: -padding, y: 0, width: size, height: size))
@@ -170,7 +171,7 @@ extension UIViewController {
         let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 115, y: self.view.frame.size.height/2, width: 240, height: 36))
         toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         toastLabel.textColor = UIColor.white
-        toastLabel.font = UIFont(name: "Roboto-Regular", size: 14)
+        toastLabel.font = UIFont(name: "Hero New Regular", size: 14)
         toastLabel.textAlignment = .center;
         toastLabel.text = message
         toastLabel.alpha = 1.0
@@ -196,28 +197,75 @@ extension UIViewController {
         let loading = MBProgressHUD.showAdded(to: self.view, animated: true)
         loading.mode = .indeterminate
         loading.label.text =  text
-        loading.label.font = UIFont(name: "Roboto-Regular", size: 11)
+        loading.label.font = UIFont(name: "Hero New Regular", size: 11)
     }
     
     func ProgressHUDHide(){
         MBProgressHUD.hide(for: self.view, animated: true)
     }
     
-    func downloadMP4File(from videoURL: URL) {
-        
-        print(videoURL)
-        let task = URLSession.shared.dataTask(with: videoURL) { data, _, error in
-            guard let videoData = data, error == nil else {
-                print("Error downloading video:", error ?? "Unknown error")
-                return
-            }
 
-            // Store the downloaded video data to SDWebImage's cache
-            SDImageCache.shared.storeImageData(toDisk: videoData, forKey: videoURL.absoluteString)
-        }
-        task.resume()
-    }
     
+    func getRoyalUserData(collectionName : String,uid : String, showProgress : Bool)  {
+        let userDefault = UserDefaults.standard
+        
+        userDefault.set(collectionName == "Users" ? "user" : "navy", forKey: "AccountType")
+        
+        if showProgress {
+            ProgressHUDShow(text: "")
+        }
+        
+        FirebaseStoreManager.db.collection(collectionName).document(uid).getDocument { snapshot, error in
+            if error != nil {
+                if showProgress {
+                    self.ProgressHUDHide()
+                }
+                self.showError(error!.localizedDescription)
+            }
+            else {
+                
+                if let snapshot = snapshot, snapshot.exists { if let user = try? snapshot.data(as: UserModel.self) {
+                    
+                    
+                    
+                    UserModel.data = user
+                    if collectionName == "Users" {
+                        
+                        self.beRootScreen(mIdentifier: Constants.StroyBoard.royalTabBarViewController)
+                    }
+                    else {
+                 
+                        
+                            
+                        if let active = user.activeAccount, active {
+                            self.beRootScreen(mIdentifier: Constants.StroyBoard.navyTabBarViewController)
+                        }
+                        else {
+                            let alert = UIAlertController(title: "Under Review", message: "Your account is currently under review. We will send you an email once it has been approved. Thank you.", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                                self.logout()
+                            }))
+                            
+                            self.present(alert, animated: true)
+                        }
+
+                    }
+                    
+                }
+                else {
+                                      
+                    DispatchQueue.main.async {
+                        self.beRootScreen(mIdentifier: Constants.StroyBoard.entryViewController)
+                    }
+                }
+                    
+                    
+                    
+                   
+                }
+            }
+        }
+    }
     
     func getUserData(uid : String, showProgress : Bool)  {
         
@@ -240,30 +288,41 @@ extension UIViewController {
                 
                 if let snapshot = snapshot, snapshot.exists {
                     
+                    if let user = FirebaseStoreManager.auth.currentUser {
+                        Firestore.firestore().collection("Users").document(user.uid).setData(["appOpen" : FieldValue.increment(Int64(1))], merge: true)
+                    }
+                     
+                        
                     
+                        if let user = try? snapshot.data(as: UserModel.self) {
+                            UserModel.data = user
+                            if FirebaseStoreManager.auth.currentUser!.uid == "BIfLoGIMIqe10WM6T1YaaSgFHth1" {
+                                self.beRootScreen(mIdentifier: Constants.StroyBoard.adminViewController)
+                            }
+                            else {
+                                
+                                
+                                
+                                
+                                if user.service == nil {
+                                    self.beRootScreen(mIdentifier: Constants.StroyBoard.serviceViewController)
+                                }
+                                else {
+                                    self.beRootScreen(mIdentifier: Constants.StroyBoard.tabBarViewController)
+                                }
+                            }
+                           
                     
-                    if let user = try? snapshot.data(as: UserModel.self) {
-                        
-                        
-                        
-                        UserModel.data = user
-                        
-                        if user.service == nil {
-                            self.beRootScreen(mIdentifier: Constants.StroyBoard.serviceViewController)
                         }
                         else {
-                            self.beRootScreen(mIdentifier: Constants.StroyBoard.tabBarViewController)
+                            
+                            DispatchQueue.main.async {
+                                self.beRootScreen(mIdentifier: Constants.StroyBoard.continueASViewController)
+                            }
                         }
-                        
-                       
-                
-                    }
-                    else {
-                        
-                        DispatchQueue.main.async {
-                            self.beRootScreen(mIdentifier: Constants.StroyBoard.continueASViewController)
-                        }
-                    }
+                    
+                    
+                   
                 }
             }
         })
@@ -296,20 +355,31 @@ func myPerformSegue(mIdentifier : String)  {
     
 }
 
-    func checkUserOrNavy() ->String {
-        let standard = UserDefaults.standard
-        return standard.string(forKey: "AccountType") ?? "user"
-    }
-    
     
     
 func getViewControllerUsingIdentifier(mIdentifier : String) -> UIViewController{
     
     let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+    
+    let storyBoard1 = UIStoryboard(name: "NavyMain", bundle: Bundle.main)
+    let adminBoard = UIStoryboard(name: "NavyAdmin", bundle: Bundle.main)
+    let navyBoard = UIStoryboard(name: "Navy", bundle: Bundle.main)
+    
    
     
     switch mIdentifier {
-    
+    case Constants.StroyBoard.video1ViewController:
+        return (storyBoard1.instantiateViewController(identifier: mIdentifier) as? RoyalVideo1stController)!
+    case Constants.StroyBoard.entryViewController :
+        return (storyBoard1.instantiateViewController(identifier: mIdentifier) as? RoyalEntryPageViewController)!
+    case Constants.StroyBoard.royalTabBarViewController :
+        return (storyBoard1.instantiateViewController(identifier: mIdentifier) as? RoyalTabbarViewController)!
+    case Constants.StroyBoard.navyTabBarViewController :
+        return (navyBoard.instantiateViewController(identifier: mIdentifier) as? RoyalNavyTabbarViewController)!
+  
+    case Constants.StroyBoard.adminTabBarViewController :
+        return (adminBoard.instantiateViewController(identifier: mIdentifier) as? RoyalAdminSelectAccountTypeController)!
+        
     case Constants.StroyBoard.continueASViewController :
         return (storyBoard.instantiateViewController(identifier: mIdentifier) as? ContinueAsViewController)!
     case Constants.StroyBoard.serviceViewController :
@@ -317,7 +387,8 @@ func getViewControllerUsingIdentifier(mIdentifier : String) -> UIViewController{
     case Constants.StroyBoard.tabBarViewController :
         return (storyBoard.instantiateViewController(identifier: mIdentifier) as? TabbarViewController)!
     
-  
+    case Constants.StroyBoard.adminViewController :
+        return (UIStoryboard(name: "Admin", bundle: Bundle.main).instantiateViewController(identifier: mIdentifier) as? AdminEntryViewController)!
 
     default:
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
@@ -387,6 +458,24 @@ func convertDateFormaterWithSlash(_ date: Date) -> String
     
 }
 
+    func convertDateForDate(_ date: Date) -> String
+    {
+        let df = DateFormatter()
+        df.dateFormat = "dd"
+        df.timeZone = TimeZone(abbreviation: "UTC")
+        df.timeZone = TimeZone.current
+        return df.string(from: date)
+        
+    }
+    func convertDateForDay(_ date: Date) -> String
+    {
+        let df = DateFormatter()
+        df.dateFormat = "EEEE"
+        df.timeZone = TimeZone(abbreviation: "UTC")
+        df.timeZone = TimeZone.current
+        return df.string(from: date)
+        
+    }
 func convertDateForHomePage(_ date: Date) -> String
 {
     let df = DateFormatter()
@@ -438,6 +527,7 @@ func convertDateIntoTimeForRecurringVoucher(_ date: Date) -> String
         }
     }
     
+    
     func getAllSubcategory(catId : String,completion : @escaping  (_ categories : Array<CategoryModel>?)->Void){
         Firestore.firestore().collection("AdminWorkouts").document(catId).collection("SubWorkouts").order(by: "orderIndex").addSnapshotListener { snapshot, error in
             if let snapshot = snapshot, !snapshot.isEmpty {
@@ -454,10 +544,49 @@ func convertDateIntoTimeForRecurringVoucher(_ date: Date) -> String
             }
         }
     }
-   
-   
     
-    func getAllSubCategory(type : String, catId : String, subId : String?,completion : @escaping  (_ contents : Array<ContentModel>?)->Void){
+    func getAllGymCategory(type : String, catId : String,completion : @escaping  (_ categories : Array<CategoryModel>?)->Void){
+        Firestore.firestore().collection(type).document(catId).collection("SubWorkouts").addSnapshotListener { snapshot, error in
+            if let snapshot = snapshot, !snapshot.isEmpty {
+                var categories = Array<CategoryModel>()
+                for qdr in snapshot.documents {
+                    if let categoryModel = try? qdr.data(as: CategoryModel.self) {
+                        categories.append(categoryModel)
+                    }
+                }
+                completion(categories)
+            }
+            else {
+                completion(nil)
+            }
+        }
+    }
+   
+    func getPFA(type : String,completion : @escaping  (_ content : ContentModel?)->Void){
+        let query =   Firestore.firestore().collection("PFA").document(type)
+      
+        query.getDocument { snapshot, error in
+            if let snapshot = snapshot, snapshot.exists {
+         
+              
+                if let contentModel = try? snapshot.data(as: ContentModel.self) {
+                    completion(contentModel)
+                    }
+                else {
+                    completion(nil)
+                }
+               
+             
+            }
+            else {
+                completion(nil)
+            }
+        }
+    }
+    
+    
+
+    func getAllRoyalSubCategory(type : String, catId : String, subId : String?,completion : @escaping  (_ contents : Array<ContentModel>?)->Void){
         var query =   Firestore.firestore().collection(type).document(catId)
         if let subId = subId {
             query  = query.collection("SubWorkouts").document(subId)
@@ -477,8 +606,9 @@ func convertDateIntoTimeForRecurringVoucher(_ date: Date) -> String
             }
         }
     }
+
     
-    func getAllVideos(type : String, catId : String,subId : String?, subCatId : String,completion : @escaping  (_ contents : Array<MultiVideoModel>?)->Void){
+    func getAllRoyalVideos(type : String, catId : String,subId : String?, subCatId : String,completion : @escaping  (_ contents : Array<MultiVideoModel>?)->Void){
         var query =  Firestore.firestore().collection(type).document(catId)
         if let subId = subId {
             query  = query.collection("SubWorkouts").document(subId)
@@ -502,6 +632,336 @@ func convertDateIntoTimeForRecurringVoucher(_ date: Date) -> String
         }
     }
     
+    
+    func getAllSubCategory(type : String, catId : String,completion : @escaping  (_ contents : Array<ContentModel>?)->Void){
+        let query =   Firestore.firestore().collection(type).document(catId)
+       
+        query.collection("Sub").order(by: "orderIndex").addSnapshotListener { snapshot, error in
+            if let snapshot = snapshot, !snapshot.isEmpty {
+                var contents = Array<ContentModel>()
+                for qdr in snapshot.documents {
+                    if let contentModel = try? qdr.data(as: ContentModel.self) {
+                        contents.append(contentModel)
+                    }
+                }
+                completion(contents)
+            }
+            else {
+                completion(nil)
+            }
+        }
+    }
+   
+    func addMyWorkout(uid : String,type : String, contentModel : ContentModel,date : Date,completion : @escaping  (_ error : String?)->Void){
+        contentModel.date = date
+        let query =   Firestore.firestore().collection("Users").document(uid)
+    
+        try? query.collection("\(type)Workouts").document(self.convertDateFormater(contentModel.date!)).setData(from: contentModel) { error in
+            if let error {
+                completion(error.localizedDescription)
+            }
+            else {
+                completion(nil)
+            }
+            
+        }
+    }
+    func downloadMP4File(from videoURL: URL) {
+        
+        print(videoURL)
+        let task = URLSession.shared.dataTask(with: videoURL) { data, _, error in
+            guard let videoData = data, error == nil else {
+                print("Error downloading video:", error ?? "Unknown error")
+                return
+            }
+
+            // Store the downloaded video data to SDWebImage's cache
+            SDImageCache.shared.storeImageData(toDisk: videoData, forKey: videoURL.absoluteString)
+        }
+        task.resume()
+    }
+    func checkUserOrNavy() ->String {
+        let standard = UserDefaults.standard
+        return standard.string(forKey: "AccountType") ?? "user"
+    }
+    
+    func checkWorkoutExists(uid: String, type: String, workoutId: String, completion: @escaping (_ exists: Bool, _ error: String?) -> Void) {
+        let query = Firestore.firestore()
+            .collection("Users")
+            .document(uid)
+            .collection("\(type)Workouts")
+            .document(workoutId)
+
+        query.getDocument { document, error in
+            if let error = error {
+                completion(false, error.localizedDescription)
+            } else if let document = document, document.exists {
+                completion(true, nil)
+            } else {
+                completion(false, nil)
+            }
+        }
+    }
+
+    func getMyWorkouts(uid : String,type : String,completion : @escaping  (_ contents : Array<ContentModel>?)->Void){
+        let query =   Firestore.firestore().collection("Users").document(uid)
+    
+        query.collection("\(type)Workouts").order(by: "date",descending: false).addSnapshotListener { snapshot, error in
+            if let snapshot = snapshot, !snapshot.isEmpty {
+                var contents = Array<ContentModel>()
+                for qdr in snapshot.documents {
+                    if let contentModel = try? qdr.data(as: ContentModel.self) {
+                        contents.append(contentModel)
+                    }
+                }
+                completion(contents)
+            }
+            else {
+                completion(nil)
+            }
+        }
+    }
+    
+    
+    func getPFAVideos(type : String,completion : @escaping  (_ videos : Array<MultiVideoModel>?)->Void){
+        let query =  Firestore.firestore().collection("PFA").document(type)
+ 
+        query.collection("Videos").order(by: "orderIndex").getDocuments { snapshot, error in
+            if let snapshot = snapshot, !snapshot.isEmpty {
+                var contents = Array<MultiVideoModel>()
+                for qdr in snapshot.documents {
+                    if let contentModel = try? qdr.data(as: MultiVideoModel.self) {
+                      
+                        contents.append(contentModel)
+                    }
+                }
+               
+                completion(contents)
+            }
+            else {
+              
+                completion(nil)
+            }
+        }
+    }
+    func getAllVideos(type : String, catId : String, subCatId : String,completion : @escaping  (_ contents : Array<MultiVideoModel>?)->Void){
+        let query =  Firestore.firestore().collection(type).document(catId)
+ 
+        query.collection("Sub").document(subCatId).collection("Videos").order(by: "orderIndex").getDocuments { snapshot, error in
+            if let snapshot = snapshot, !snapshot.isEmpty {
+                var contents = Array<MultiVideoModel>()
+                for qdr in snapshot.documents {
+                    if let contentModel = try? qdr.data(as: MultiVideoModel.self) {
+                      
+                        contents.append(contentModel)
+                    }
+                }
+               
+                completion(contents)
+            }
+            else {
+              
+                completion(nil)
+            }
+        }
+    }
+    
+    func getAllVideosGymWorkout(type : String, catId : String, sId : String, subCatId : String,completion : @escaping  (_ contents : Array<MultiVideoModel>?)->Void){
+        let query =  Firestore.firestore().collection(type).document(catId).collection("SubWorkouts").document(sId)
+ 
+        query.collection("Sub").document(subCatId).collection("Videos").order(by: "orderIndex").getDocuments { snapshot, error in
+            if let snapshot = snapshot, !snapshot.isEmpty {
+                var contents = Array<MultiVideoModel>()
+                for qdr in snapshot.documents {
+                    if let contentModel = try? qdr.data(as: MultiVideoModel.self) {
+                      
+                        contents.append(contentModel)
+                    }
+                }
+               
+                completion(contents)
+            }
+            else {
+              
+                completion(nil)
+            }
+        }
+    }
+    
+    func compressVideo(sourceURL: URL, completion: @escaping (URL?, Error?) -> Void) {
+       let asset = AVAsset(url: sourceURL)
+       let exportSession = AVAssetExportSession(asset: asset, presetName: AVAssetExportPresetMediumQuality)
+       
+       let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+       let compressedURL = documentsDirectory.appendingPathComponent("compressedVideo.mp4")
+       
+       do {
+           if FileManager.default.fileExists(atPath: compressedURL.path) {
+               try FileManager.default.removeItem(at: compressedURL)
+           }
+       } catch {}
+
+
+       exportSession?.outputURL = compressedURL
+       exportSession?.outputFileType = .mp4
+       exportSession?.exportAsynchronously {
+           switch exportSession?.status {
+           case .completed:
+               completion(compressedURL, nil)
+           case .failed, .cancelled:
+               completion(nil, exportSession?.error)
+           default:
+               break
+           }
+       }
+   }
+    func sendMail(to_name : String, to_email : String, subject : String, body : String, completion : @escaping (_ error : String)->Void) {
+        let headers = [
+            "Content-Type": "application/x-www-form-urlencoded"
+        ]
+        
+        let postData = NSMutableData(data: "to_name=\(to_name)&to_email=\(to_email)&subject=\(subject)&body=\(body)".data(using: String.Encoding.utf8)!)
+        let request = NSMutableURLRequest(url: NSURL(string: "https://softment.in/hms/php-mailer/sendmail.php" )! as URL,
+                                          cachePolicy: .useProtocolCachePolicy,
+                                          timeoutInterval: 10.0)
+        request.httpMethod = "POST"
+        request.allHTTPHeaderFields = headers
+        request.httpBody = postData as Data
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: {  (data, response, error) in
+            
+            
+            
+            guard let data = data,
+                  let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String : Any],
+                  let status = json["status"] as? [String : AnyObject],
+                  let errorInfo = status["ErrorInfo"] as? String else {
+                
+                completion("Server not responding")
+                return
+            }
+            completion(errorInfo)
+        })
+        task.resume()
+        
+    }
+    
+    func getAllCheckInOut(completion : @escaping  (_ categories : Array<CheckInOutModel>?)->Void){
+        Firestore.firestore().collection("CheckInOuts").order(by: "checkIn",descending: true).getDocuments { snapshot, error in
+            if let snapshot = snapshot, !snapshot.isEmpty {
+                var categories = Array<CheckInOutModel>()
+                for qdr in snapshot.documents {
+                    if let categoryModel = try? qdr.data(as: CheckInOutModel.self) {
+                        categories.append(categoryModel)
+                    }
+                }
+                completion(categories)
+            }
+            else {
+                completion(nil)
+            }
+        }
+    }
+    
+    func getAllRoyalUsers(collectionName : String,startDate: Date, endDate: Date, isLifetime : Bool,orderBy : String, completion : @escaping  (_ users : Array<UserModel>?)->Void){
+        var query : Query!
+        let startTimestamp = Timestamp(date: startDate)
+          let endTimestamp = Timestamp(date: endDate)
+      
+        if orderBy == "name" {
+            query = Firestore.firestore().collection(collectionName).order(by: "date").order(by: "fullName")
+        }
+        else if orderBy == "date" {
+            query = Firestore.firestore().collection(collectionName).order(by: "date",descending: true)
+        }
+        
+        if !isLifetime {
+            query = query.whereField("date", isGreaterThanOrEqualTo: startTimestamp)
+                .whereField("date", isLessThanOrEqualTo: endTimestamp)
+        }
+        
+        query.getDocuments { snapshot, error in
+            if let snapshot = snapshot, !snapshot.isEmpty {
+                var users = Array<UserModel>()
+                for qdr in snapshot.documents {
+                    if let userModel = try? qdr.data(as: UserModel.self) {
+                      
+                        users.append(userModel)
+                    }
+                }
+               
+                completion(users)
+            }
+            else {
+              
+                completion(nil)
+            }
+        }
+    }
+
+   
+   func deleteFileFromS3(bucketName: String, s3FileName: String, completion: @escaping (Error?) -> Void) {
+       let s3 = AWSS3.default()
+       let deleteObjectRequest = AWSS3DeleteObjectRequest()
+       deleteObjectRequest?.bucket = bucketName
+       deleteObjectRequest?.key = s3FileName
+
+       s3.deleteObject(deleteObjectRequest!) { (output, error) in
+           if let error = error {
+               print("Delete failed with error: \(error)")
+               completion(error)
+           } else {
+               print("Delete successful")
+               completion(nil)
+           }
+       }
+   }
+
+    func firstAndLastDayOfTheMonth() -> (Date, Date) {
+        let calendar = Calendar.current
+        let now = Date()
+        let firstDay = calendar.date(from: Calendar.current.dateComponents([.year, .month], from: now))!
+        let lastDay = calendar.date(byAdding: DateComponents(month: 1, day: -1), to: firstDay)!
+        return (firstDay, lastDay)
+    }
+
+    func firstAndLastDayOfTheYear() -> (Date, Date) {
+        let calendar = Calendar.current
+        let now = Date()
+        let firstDay = calendar.date(from: Calendar.current.dateComponents([.year], from: now))!
+        let lastDay = calendar.date(byAdding: DateComponents(year: 1, day: -1), to: firstDay)!
+        return (firstDay, lastDay)
+    }
+    
+    
+   func uploadVideoToS3(fileUrl: URL, bucketName: String, s3FileName: String, completion: @escaping (Error?) -> Void) {
+       // Check if the file exists at the URL
+       if FileManager.default.fileExists(atPath: fileUrl.path) {
+           self.compressVideo(sourceURL: fileUrl) { url, error in
+               if let url = url {
+                   let transferUtility = AWSS3TransferUtility.default()
+                   
+                   transferUtility.uploadFile(url, bucket: bucketName, key: s3FileName, contentType: "video/mp4", expression: nil) { (task, error) in
+                       if let error = error {
+                           print("Upload failed with error: \(error)")
+                           completion(error) // Notify about the failure
+                       } else {
+                           print("Upload successful")
+                           completion(nil) // Notify about the success
+                       }
+                   }
+               }
+               else {
+                   print("COMPRES VIDEO ERROR "+error!.localizedDescription)
+                   completion(error)
+               }
+           }
+       } else {
+           print("File does not exist at \(fileUrl.path)")
+           completion(NSError(domain: "com.amazonaws.AWSS3TransferUtilityErrorDomain", code: 0, userInfo: [NSLocalizedDescriptionKey: "File does not exist."]))
+       }
+   }
+   
 
 
 func convertDateIntoDayDigitForRecurringVoucher(_ date: Date) -> String
@@ -686,3 +1146,21 @@ extension NSLayoutConstraint {
     }
 }
 
+extension NSObject {
+    func addCheckInOut(gymName : String, checkInTime : Date, CheckOutTime : Date) {
+        
+       
+        let checkInOutModel = CheckInOutModel()
+        checkInOutModel.name = UserModel.data!.fullName
+        checkInOutModel.email = UserModel.data!.email
+        checkInOutModel.checkIn = checkInTime
+        checkInOutModel.checkOut = CheckOutTime
+        checkInOutModel.gymName = Constants.gymName
+        
+        Constants.gymName = ""
+        
+        
+        
+        try? Firestore.firestore().collection("CheckInOuts").document().setData(from: checkInOutModel, merge: true)
+    }
+}

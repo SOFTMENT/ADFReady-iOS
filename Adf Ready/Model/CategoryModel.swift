@@ -14,6 +14,7 @@ class CategoryModel : NSObject, Codable {
     var desc : String?
     var image : String?
     var orderIndex : Int?
+    var isItGymCategory : Bool?
     
     
     

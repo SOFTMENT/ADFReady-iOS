@@ -30,9 +30,18 @@ class WelcomeViewController2 : UIViewController {
             
         }
         else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.7 ) {
-                self.beRootScreen(mIdentifier: Constants.StroyBoard.continueASViewController)
+            if UserDefaults.standard.bool(forKey: "disclaimers"){
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.7 ) {
+                    self.beRootScreen(mIdentifier: Constants.StroyBoard.continueASViewController)
+                }
             }
+            else {
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "privacySeg", sender: nil)
+                }
+            }
+            
+            
            
         }
     }

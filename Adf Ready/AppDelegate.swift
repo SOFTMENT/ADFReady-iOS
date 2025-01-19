@@ -12,6 +12,8 @@ import IQKeyboardManagerSwift
 import AWSS3
 import AWSCore
 import AWSMobileClientXCF
+import FirebaseFirestoreInternal
+import GooglePlaces
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Override point for customization after application launch.
         AWSDDLog.sharedInstance.logLevel = .verbose
-        AWSDDLog.add(AWSDDTTYLogger.sharedInstance)
+        AWSDDLog.add(AWSDDOSLogger.sharedInstance)
 
         
         let credentialsProvider = AWSCognitoCredentialsProvider(regionType: .USEast1, identityPoolId: "us-east-1:89410010-696e-4602-bede-294046975a75")
@@ -31,9 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider: credentialsProvider)
         AWSServiceManager.default().defaultServiceConfiguration = configuration
 
-     
+        GMSPlacesClient.provideAPIKey("AIzaSyCyDpwvgmvwaZ5V45cyuLCHcSTNz5BhD3Q")
         
-       
 
         AWSMobileClient.default().initialize { (userState, error) in
             if let error = error {
@@ -43,11 +44,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        
         FirebaseApp.configure()
         IQKeyboardManager.shared.enable = true
-        return true
-    }
+        
+      
+              return true
+          }
 
+   
+   
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {

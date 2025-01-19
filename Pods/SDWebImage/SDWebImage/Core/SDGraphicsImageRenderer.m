@@ -148,6 +148,7 @@
 #endif
             self.scale = screenScale;
             self.opaque = NO;
+            self.preferredRange = SDGraphicsImageRendererFormatRangeStandard;
 #if SD_UIKIT
         }
 #endif
@@ -189,6 +190,7 @@
 #endif
             self.scale = screenScale;
             self.opaque = NO;
+            self.preferredRange = SDGraphicsImageRendererFormatRangeStandard;
 #if SD_UIKIT
         }
 #endif

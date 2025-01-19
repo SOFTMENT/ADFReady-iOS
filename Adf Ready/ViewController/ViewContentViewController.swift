@@ -26,7 +26,8 @@ class ViewContentViewController : UIViewController, WKUIDelegate,WKNavigationDel
     @IBOutlet weak var completeBtn: UIButton!
     var type : String?
     var player : AVPlayer?
-    var delegate : ReloadSubCatInterface?
+    
+   
     @IBOutlet weak var nextBtn: UIView!
     @IBOutlet weak var nextBtnText: UILabel!
     
@@ -37,9 +38,10 @@ class ViewContentViewController : UIViewController, WKUIDelegate,WKNavigationDel
     
     
     
-    override func viewDidLoad() {
-        
-        guard let contentModels = contentModels, delegate != nil else {
+   
+    
+    override func viewWillAppear(_ animated: Bool) {
+        guard let contentModels = contentModels else {
             DispatchQueue.main.async {
                 self.dismiss(animated: true)
                 
@@ -47,13 +49,12 @@ class ViewContentViewController : UIViewController, WKUIDelegate,WKNavigationDel
             return
         }
         
-   
         nextBtn.layer.cornerRadius = 4
         nextBtn.isUserInteractionEnabled = true
         nextBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(nextBtnClicked)))
      
         
-        if type == "Informations" {
+        if type != "\(UserModel.data!.service!)Workouts"  {
             mainCompletedBtn.isHidden = true
         }
         
@@ -67,10 +68,7 @@ class ViewContentViewController : UIViewController, WKUIDelegate,WKNavigationDel
         
          let contentModel = contentModels[position]
          loadUI(contentModel: contentModel)
-        
     }
-    
-    
     func loadUI(contentModel : ContentModel){
         
         if contentModel.multiVideoModels!.count == 0 {
@@ -90,38 +88,42 @@ class ViewContentViewController : UIViewController, WKUIDelegate,WKNavigationDel
             nextBtnText.text = "Video 2"
         }
         
-        Firestore.firestore().collection(checkUserOrNavy() == "user" ? "Users" : "NavyMembers").document(UserModel.data!.uid ?? "123").collection("Completed").document(contentModel.id!).getDocument { snapshot, error in
-            if let snapshot = snapshot, snapshot.exists {
-                self.completeBtn.setTitle("Completed", for: .normal)
-                self.completeBtn.setTitleColor(.white, for: .normal)
-                self.completeBtn.backgroundColor = UIColor(red: 75/255, green: 181/255, blue: 67/255, alpha: 1)
-                self.completeBtn.isUserInteractionEnabled = false
-                self.completeBtn.isEnabled = false
-                
-            }
-        }
+        
+//        Firestore.firestore().collection("Users").document(UserModel.data!.uid ?? "123").collection("Completed").document(contentModel.id!).getDocument { snapshot, error in
+//            if let snapshot = snapshot, snapshot.exists {
+//                self.completeBtn.setTitle("Completed", for: .normal)
+//                self.completeBtn.setTitleColor(.white, for: .normal)
+//                self.completeBtn.backgroundColor = UIColor(red: 75/255, green: 181/255, blue: 67/255, alpha: 1)
+//                self.completeBtn.isUserInteractionEnabled = false
+//                self.completeBtn.isEnabled = false
+//                
+//            }
+//        }
         
         topTitle.text = contentModel.title ?? ""
         
-        if contentModel.pdfLink != nil {
-            self.webView.isHidden = false
-            self.progressView.isHidden = false
-            webView.uiDelegate  =  self
-            webView.navigationDelegate = self
-            progressView.progress = 0.0
-            webView.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
-            webView.addSubview(progressView)
-        }
-        else {
-          
-            
-            self.webView.isHidden = true
-            self.progressView.isHidden = true
-           
-    
-        }
+      
         view.layoutIfNeeded()
         
+        DispatchQueue.main.async {
+            if let pdfLink = contentModel.pdfLink {
+                self.webView.isHidden = false
+                self.progressView.isHidden = false
+                self.webView.uiDelegate  =  self
+                self.webView.navigationDelegate = self
+                self.progressView.progress = 0.0
+                self.webView.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
+                self.webView.addSubview(self.progressView)
+                let urls = URL(string:pdfLink)
+                let request = URLRequest(url: urls!)
+                self.webView.load(request)
+            }
+            else {
+                self.webView.isHidden = true
+                self.progressView.isHidden = true
+            }
+           
+        }
         if !contentModel.multiVideoModels!.isEmpty{
             
             videoView.isUserInteractionEnabled = true
@@ -138,17 +140,14 @@ class ViewContentViewController : UIViewController, WKUIDelegate,WKNavigationDel
         
        
         
-        DispatchQueue.main.async {
-            if let pdfLink = contentModel.pdfLink {
-                let urls = URL(string:pdfLink)
-                let request = URLRequest(url: urls!)
-                self.webView.load(request)
-            }
-        }
+      
     }
   
     
     @objc func nextBtnClicked(){
+        print("CONTENT MODEL COUNT ",contentModels!.count);
+        print("---------")
+        print("MULTIMODEL COUNT ",contentModels![position].multiVideoModels!.count);
         
         if contentModels!.count > (position + 1) && contentModels![position].multiVideoModels!.count == (count + 1) {
             count = 0
@@ -158,7 +157,7 @@ class ViewContentViewController : UIViewController, WKUIDelegate,WKNavigationDel
            
             
         }
-        else if contentModels!.count > (position + 1) &&  contentModels![position].multiVideoModels!.count > (count + 1) {
+        else if contentModels!.count >= (position + 1) &&  contentModels![position].multiVideoModels!.count > (count + 1) {
             
             count = count + 1
             if count == (contentModels![position].multiVideoModels!.count - 1) {
@@ -180,7 +179,28 @@ class ViewContentViewController : UIViewController, WKUIDelegate,WKNavigationDel
             self.nextBtn.isHidden = true
         }
     }
+    @IBAction func completeBtnClicked(_ sender: Any) {
+        let alert = UIAlertController(title: "Confirm", message: "Do you want to mark this session as a completed?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+//            self.completeBtn.setTitle("Completed", for: .normal)
+//            self.completeBtn.setTitleColor(.white, for: .normal)
+//            self.completeBtn.backgroundColor = UIColor(red: 75/255, green: 181/255, blue: 67/255, alpha: 1)
+//            self.showToast(message: "Completed")
+//            self.completeBtn.isUserInteractionEnabled = false
+//            self.completeBtn.isEnabled = false
+            
+            
+            self.showToast(message: "Session Completed")
+            Firestore.firestore().collection("Users").document(UserModel.data!.uid ?? "123").setData(["sessionCompleted" : FieldValue.increment(Int64(1))], merge: true)
+            Firestore.firestore().collection("Users").document(UserModel.data!.uid ?? "123").collection("Completed").document(self.contentModels![self.position].id!).setData(["id" : self.contentModels![self.position].id!]) { error in
+               
+            }
     
+            
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(alert, animated: true)
+    }
     func playVideo(multiVideoModel : MultiVideoModel) {
        
         player?.pause()
@@ -203,27 +223,10 @@ class ViewContentViewController : UIViewController, WKUIDelegate,WKNavigationDel
              }
         
         if let url = URL(string: Constants.AWS_BASE_URL+"/"+multiVideoModel.videoURL!) {
-             if let videoData = SDImageCache.shared.diskImageData(forKey: url.absoluteString) {
-                 let documentsDirectoryURL = FileManager.default.urls(
-                     for: .documentDirectory,
-                     in: .userDomainMask
-                 ).first!
-                 let fileURL = documentsDirectoryURL.appendingPathComponent(url.lastPathComponent)
-
-                 try? videoData.write(to: fileURL, options: .atomic)
-
-                 let playerItem = AVPlayerItem(url: fileURL)
-                 player?.replaceCurrentItem(with: playerItem)
-             
-                 // Setup your player view and play the video.
-             } else {
-             
-                 downloadMP4File(from: url)
-                 // Continue to play online while downloading for cache
+            
                  let playerItem = AVPlayerItem(url: url)
                   player?.replaceCurrentItem(with: playerItem)
-             }
-
+          
              let playerLayer = AVPlayerLayer(player: player)
              playerLayer.videoGravity = .resizeAspect
              playerLayer.frame = self.videoView.bounds

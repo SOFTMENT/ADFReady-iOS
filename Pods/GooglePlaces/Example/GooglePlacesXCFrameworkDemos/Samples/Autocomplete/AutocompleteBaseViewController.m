@@ -14,6 +14,7 @@
  */
 
 #import "GooglePlacesXCFrameworkDemos/Samples/Autocomplete/AutocompleteBaseViewController.h"
+
 #import <UIKit/UIKit.h>
 
 #if __has_feature(modules)
@@ -74,47 +75,13 @@
       return @"Unknown";
   }
 }
-- (void)fetchOpenStatusForPlace:(GMSPlace *)place {
-  AutocompleteBaseViewController *weakSelf = self;
-  GMSPlaceIsOpenRequest *request = [[GMSPlaceIsOpenRequest alloc] initWithPlace:place date:nil];
-  [[GMSPlacesClient sharedClient]
-      isOpenWithRequest:request
-               callback:^(GMSPlaceIsOpenResponse *_Nonnull response, NSError *_Nullable error) {
-                 NSString *openStatusText;
-                 if (error) {
-                   NSLog(@"Error fetching open status: %@", error);
-                   return;
-                 }
-                 switch (response.status) {
-                   case GMSPlaceOpenStatusOpen:
-                     openStatusText = @"Open";
-                     break;
-                   case GMSPlaceOpenStatusClosed:
-                     openStatusText = @"Closed";
-                     break;
-                   case GMSPlaceOpenStatusUnknown:
-                     openStatusText = @"Unknown";
-                     break;
-                 }
-                 [weakSelf appendOpenStatusText:openStatusText];
-               }];
-}
-
-- (void)appendOpenStatusText:(NSString *)openStatus {
-  NSAttributedString *openStatusText = [[NSAttributedString alloc] initWithString:openStatus];
-  NSMutableAttributedString *currentText =
-      [[NSMutableAttributedString alloc] initWithAttributedString:_textView.attributedText];
-  [currentText
-      appendAttributedString:[[NSAttributedString alloc] initWithString:@"\nPlace status: "]];
-  [currentText appendAttributedString:openStatusText];
-  [self formatAttributedString:currentText];
-  _textView.attributedText = currentText;
-}
 
 - (void)autocompleteDidSelectPlace:(GMSPlace *)place {
   NSMutableAttributedString *text =
       [[NSMutableAttributedString alloc] initWithString:[place description]];
-  [self fetchOpenStatusForPlace:place];
+  [text appendAttributedString:[[NSAttributedString alloc] initWithString:@"\nPlace status: "]];
+  NSString *openStatusText = [self openStatusTextFromPlace:place];
+  [text appendAttributedString:[[NSAttributedString alloc] initWithString:openStatusText]];
   NSAttributedString *attributions = place.attributions;
   if (attributions) {
     NSAttributedString *doubleReturn = [[NSAttributedString alloc] initWithString:@"\n\n"];
@@ -172,9 +139,6 @@
       addAttribute:NSFontAttributeName
              value:[[UIFontMetrics metricsForTextStyle:UIFontTextStyleBody] scaledFontForFont:font]
              range:NSMakeRange(0, string.length)];
-  [string addAttribute:NSForegroundColorAttributeName
-                 value:[UIColor labelColor]
-                 range:NSMakeRange(0, string.length)];
 }
 
 - (void)resetViews {
@@ -264,26 +228,24 @@
   __block NSMutableArray *attributedPhotos = [NSMutableArray array];
   __block NSInteger photoRequestsInFlight = photos.count;
   for (GMSPlacePhotoMetadata *photo in photos) {
-    GMSFetchPhotoRequest *request =
-        [[GMSFetchPhotoRequest alloc] initWithPhotoMetadata:photo maxSize:CGSizeMake(800, 800)];
-    [[GMSPlacesClient sharedClient]
-        fetchPhotoWithRequest:request
-                     callback:^(UIImage *photoImage, NSError *error) {
-                       photoRequestsInFlight--;
-                       if (photoImage == nil) {
-                         NSLog(@"Photo request failed with error: %@", error);
-                       } else {
-                         AttributedPhoto *attributedPhoto = [[AttributedPhoto alloc] init];
-                         attributedPhoto.image = photoImage;
-                         attributedPhoto.attributions = photo.attributions;
-                         [attributedPhotos addObject:attributedPhoto];
-                       }
+    [[GMSPlacesClient sharedClient] loadPlacePhoto:photo
+                                          callback:^(UIImage *photoImage, NSError *error) {
+                                            photoRequestsInFlight--;
+                                            if (photoImage == nil) {
+                                              NSLog(@"Photo request failed with error: %@", error);
+                                            } else {
+                                              AttributedPhoto *attributedPhoto =
+                                                  [[AttributedPhoto alloc] init];
+                                              attributedPhoto.image = photoImage;
+                                              attributedPhoto.attributions = photo.attributions;
+                                              [attributedPhotos addObject:attributedPhoto];
+                                            }
 
-                       if (photoRequestsInFlight == 0) {
-                         _photoView.photoList = attributedPhotos;
-                         [_photoButton setEnabled:YES];
-                       }
-                     }];
+                                            if (photoRequestsInFlight == 0) {
+                                              _photoView.photoList = attributedPhotos;
+                                              [_photoButton setEnabled:YES];
+                                            }
+                                          }];
   }
 }
 

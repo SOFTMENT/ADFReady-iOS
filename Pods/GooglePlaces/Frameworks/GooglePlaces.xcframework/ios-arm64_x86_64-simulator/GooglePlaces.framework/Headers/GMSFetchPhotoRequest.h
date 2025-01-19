@@ -15,7 +15,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/** Request object to use with |GMSPlacesClient| to fetch a photo. */
 @interface GMSFetchPhotoRequest : NSObject
 
 /**

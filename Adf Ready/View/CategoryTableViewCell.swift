@@ -9,9 +9,6 @@ import UIKit
 
 class CategoryTableViewCell : UITableViewCell {
     
-
-    @IBOutlet weak var mImage: UIImageView!
-    
     @IBOutlet weak var mTitle: UILabel!
     @IBOutlet weak var mDesc: UILabel!
     @IBOutlet weak var mView: UIView!
@@ -19,5 +16,6 @@ class CategoryTableViewCell : UITableViewCell {
     override class func awakeFromNib() {
         
     }
+    
     
 }

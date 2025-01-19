@@ -24,7 +24,7 @@ class SignUpViewController : UIViewController {
     
     override func viewDidLoad() {
         loginLbl.isUserInteractionEnabled = true
-        loginLbl.addGestureRecognizer(UITapGestureRecognizer(target: true, action: #selector(loginClicked)))
+        loginLbl.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(loginClicked)))
         
         backView.isUserInteractionEnabled = true
         backView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backBtnClicked)))
@@ -33,8 +33,7 @@ class SignUpViewController : UIViewController {
         emailTF.delegate = self
         passwordTF.delegate = self
         ageGroupTF.delegate = self
-        ageGroupTF.setRightIcons(icon: UIImage(named: "down-arrow")!)
-        ageGroupTF.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showAgeGroupSelection)))
+      
         stateTF.delegate = self
         stateTF.isUserInteractionEnabled = true
         stateTF.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showStateSelection)))
@@ -49,28 +48,7 @@ class SignUpViewController : UIViewController {
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
     }
-    
-    @objc func showAgeGroupSelection() {
-          let alertController = UIAlertController(title: "Select a Age Group", message: nil, preferredStyle: .actionSheet)
-          
-        for state in Constants.ageRange {
-              let action = UIAlertAction(title: state, style: .default) { _ in
-                  self.ageGroupTF.text = state
-              }
-              alertController.addAction(action)
-          }
-          
-          // Add a cancel option
-          let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-          alertController.addAction(cancelAction)
-          
-          // Present the alert controller as an action sheet
-          if let popoverController = alertController.popoverPresentationController {
-              popoverController.sourceView = ageGroupTF
-              popoverController.sourceRect = ageGroupTF.bounds
-          }
-          present(alertController, animated: true, completion: nil)
-      }
+ 
     
     
     @objc func showReasonForDownloadSelection() {
@@ -165,7 +143,7 @@ class SignUpViewController : UIViewController {
             return
         }
         guard let sAgeGroup = ageGroupTF.text, !sAgeGroup.isEmpty else {
-            self.showToast(message: "Please select your age group")
+            self.showToast(message: "Please Enter Your Age")
             return
         }
         guard let sState = stateTF.text, !sState.isEmpty else {

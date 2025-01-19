@@ -39,7 +39,8 @@ target 'Adf Ready' do
    
    pod 'GeoFire/Utils'
    
-   
+   pod 'DGCharts'
+
 end
 
 

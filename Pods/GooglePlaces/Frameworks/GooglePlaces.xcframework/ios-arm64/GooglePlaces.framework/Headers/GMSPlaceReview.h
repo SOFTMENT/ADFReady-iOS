@@ -15,7 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class GMSPlaceAuthorAttribution;
 
-/** This class represents a single place review. */
 @interface GMSPlaceReview : NSObject
 
 /**

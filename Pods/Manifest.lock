@@ -953,6 +953,9 @@ PODS:
     - BoringSSL-GRPC/Interface (= 0.0.32)
   - BoringSSL-GRPC/Interface (0.0.32)
   - CropViewController (2.7.4)
+  - DGCharts (5.1.0):
+    - DGCharts/Core (= 5.1.0)
+  - DGCharts/Core (5.1.0)
   - Firebase/Analytics (10.29.0):
     - Firebase/Core
   - Firebase/Auth (10.29.0):
@@ -1085,7 +1088,7 @@ PODS:
     - GoogleUtilities/Environment (~> 7.7)
     - nanopb (< 2.30911.0, >= 2.30908.0)
     - PromisesObjC (< 3.0, >= 1.2)
-  - GooglePlaces (9.1.0)
+  - GooglePlaces (9.0.0)
   - GoogleUtilities/AppDelegateSwizzler (7.13.3):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -1193,47 +1196,8 @@ PODS:
   - gRPC-Core/Interface (1.62.5)
   - gRPC-Core/Privacy (1.62.5)
   - GTMSessionFetcher/Core (3.5.0)
-  - IQKeyboardCore (1.0.5)
-  - IQKeyboardManagerSwift (7.2.0):
-    - IQKeyboardManagerSwift/Appearance (= 7.2.0)
-    - IQKeyboardManagerSwift/Core (= 7.2.0)
-    - IQKeyboardManagerSwift/IQKeyboardReturnKeyHandler (= 7.2.0)
-    - IQKeyboardManagerSwift/IQKeyboardToolbarManager (= 7.2.0)
-    - IQKeyboardManagerSwift/IQTextView (= 7.2.0)
-    - IQKeyboardManagerSwift/Resign (= 7.2.0)
-    - IQKeyboardNotification (= 1.0.3)
-    - IQTextInputViewNotification (= 1.0.5)
-  - IQKeyboardManagerSwift/Appearance (7.2.0):
-    - IQKeyboardManagerSwift/Core
-    - IQKeyboardNotification (= 1.0.3)
-    - IQTextInputViewNotification (= 1.0.5)
-  - IQKeyboardManagerSwift/Core (7.2.0):
-    - IQKeyboardNotification (= 1.0.3)
-    - IQTextInputViewNotification (= 1.0.5)
-  - IQKeyboardManagerSwift/IQKeyboardReturnKeyHandler (7.2.0):
-    - IQKeyboardNotification (= 1.0.3)
-    - IQTextInputViewNotification (= 1.0.5)
-  - IQKeyboardManagerSwift/IQKeyboardToolbarManager (7.2.0):
-    - IQKeyboardManagerSwift/Core
-    - IQKeyboardManagerSwift/IQKeyboardToolbarManager/IQKeyboardToolbar (= 7.2.0)
-    - IQKeyboardNotification (= 1.0.3)
-    - IQTextInputViewNotification (= 1.0.5)
-  - IQKeyboardManagerSwift/IQKeyboardToolbarManager/IQKeyboardToolbar (7.2.0):
-    - IQKeyboardManagerSwift/Core
-    - IQKeyboardNotification (= 1.0.3)
-    - IQTextInputViewNotification (= 1.0.5)
-  - IQKeyboardManagerSwift/IQTextView (7.2.0):
-    - IQKeyboardManagerSwift/IQKeyboardToolbarManager/IQKeyboardToolbar
-    - IQKeyboardNotification (= 1.0.3)
-    - IQTextInputViewNotification (= 1.0.5)
-  - IQKeyboardManagerSwift/Resign (7.2.0):
-    - IQKeyboardManagerSwift/Core
-    - IQKeyboardNotification (= 1.0.3)
-    - IQTextInputViewNotification (= 1.0.5)
-  - IQKeyboardNotification (1.0.3)
-  - IQTextInputViewNotification (1.0.5):
-    - IQKeyboardCore (= 1.0.5)
-  - leveldb-library (1.22.6)
+  - IQKeyboardManagerSwift (7.1.1)
+  - leveldb-library (1.22.5)
   - lottie-ios (4.5.0)
   - MBProgressHUD (1.2.0)
   - nanopb (2.30910.0):
@@ -1243,14 +1207,15 @@ PODS:
   - nanopb/encode (2.30910.0)
   - PromisesObjC (2.4.0)
   - RecaptchaInterop (100.0.0)
-  - SDWebImage (5.20.0):
-    - SDWebImage/Core (= 5.20.0)
-  - SDWebImage/Core (5.20.0)
+  - SDWebImage (5.19.4):
+    - SDWebImage/Core (= 5.19.4)
+  - SDWebImage/Core (5.19.4)
   - SwiftyGif (5.4.5)
   - TTGSnackbar (1.12.0)
 
 DEPENDENCIES:
   - CropViewController
+  - DGCharts
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Firestore
@@ -1272,6 +1237,7 @@ SPEC REPOS:
     - abseil
     - BoringSSL-GRPC
     - CropViewController
+    - DGCharts
     - Firebase
     - FirebaseAnalytics
     - FirebaseAppCheckInterop
@@ -1297,10 +1263,7 @@ SPEC REPOS:
     - "gRPC-C++"
     - gRPC-Core
     - GTMSessionFetcher
-    - IQKeyboardCore
     - IQKeyboardManagerSwift
-    - IQKeyboardNotification
-    - IQTextInputViewNotification
     - leveldb-library
     - lottie-ios
     - MBProgressHUD
@@ -1315,6 +1278,7 @@ SPEC CHECKSUMS:
   abseil: d121da9ef7e2ff4cab7666e76c5a3e0915ae08c3
   BoringSSL-GRPC: 1e2348957acdbcad360b80a264a90799984b2ba6
   CropViewController: 3489bbf95a3e11c654382b0bae08ac645cdf1b93
+  DGCharts: 1c6daf585b6cfc78807af44ea690d357c410627f
   Firebase: cec914dab6fd7b1bd8ab56ea07ce4e03dd251c2d
   FirebaseAnalytics: 23717de130b779aa506e757edb9713d24b6ffeda
   FirebaseAppCheckInterop: 6a1757cfd4067d8e00fccd14fcc1b8fd78cfac07
@@ -1335,25 +1299,22 @@ SPEC CHECKSUMS:
   GeoFire: a579ffdcdcf6fe74ef9efd7f887d4082598d6d1f
   GoogleAppMeasurement: f9de05ee17401e3355f68e8fc8b5064d429f5918
   GoogleDataTransport: 6c09b596d841063d76d4288cc2d2f42cc36e1e2a
-  GooglePlaces: 00c43ad62c888354fe0bc5ce09181b2f6ce8b6d1
+  GooglePlaces: cf1f5b61297da7ac64bcb147cfa7b435d74ed6d9
   GoogleUtilities: ea963c370a38a8069cc5f7ba4ca849a60b6d7d15
   "gRPC-C++": e725ef63c4475d7cdb7e2cf16eb0fde84bd9ee51
   gRPC-Core: eee4be35df218649fe66d721a05a7f27a28f069b
   GTMSessionFetcher: 5aea5ba6bd522a239e236100971f10cb71b96ab6
-  IQKeyboardCore: 28c8bf3bcd8ba5aa1570b318cbc4da94b861711e
-  IQKeyboardManagerSwift: 12d6ae3632ef744ccd033c048b566af13cc10d49
-  IQKeyboardNotification: d7382c4466c5a5adef92c7452ebf861b36050088
-  IQTextInputViewNotification: 4381fb828881983205fbee38f17da8a9fe2e835c
-  leveldb-library: cc8b8f8e013647a295ad3f8cd2ddf49a6f19be19
+  IQKeyboardManagerSwift: d7f3d3a562c237a0e7335e657cd598c452f57f1b
+  leveldb-library: e8eadf9008a61f9e1dde3978c086d2b6d9b9dc28
   lottie-ios: a881093fab623c467d3bce374367755c272bdd59
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   nanopb: 438bc412db1928dac798aa6fd75726007be04262
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
-  SDWebImage: 73c6079366fea25fa4bb9640d5fb58f0893facd8
+  SDWebImage: 066c47b573f408f18caa467d71deace7c0f8280d
   SwiftyGif: 706c60cf65fa2bc5ee0313beece843c8eb8194d4
   TTGSnackbar: 8e7650b9b1f5f44e40228473455986f5c12213c7
 
-PODFILE CHECKSUM: e82c0d5699dd69c119b572117efd5267a97cf58f
+PODFILE CHECKSUM: 3768eaf2f2fad7075bfa438879dfd33210d161b6
 
 COCOAPODS: 1.16.2

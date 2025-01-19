@@ -15,14 +15,20 @@ class UserModel: NSObject, Codable {
     var email : String?
     var uid : String?
     var createDate : Date?
+    var date : Date?
     var profilePic : String?
     var gender : String?
     var ageGroup : String?
     var state : String?
     var reasonForDownload : String?
     var service : String?
-    
-    
+    var stepStartDate : Date?
+    var stepEndDate : Date?
+    var perDayStepIncrement : Int?
+    var weeksUntil : Int?
+    var appOpen : Int?
+    var sessionCompleted : Int?
+    var activeAccount : Bool?
     static func clean() {
         userModel = nil
     }

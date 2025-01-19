@@ -16,14 +16,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class GMSAutocompleteSessionToken;
 
-/** Request object to use with |GMSPlacesClient| to fetch a place. */
 @interface GMSFetchPlaceRequest : NSObject
 
 /**
  * Request object to use with |GMSPlacesClient| to fetch a place.
  *
- * @param placeID The ID of the place to be requested.
- * @param placeProperties The properties of the place to be requested. Must not be empty. An empty
+ * @param placeID the ID of the place to be requested.
+ * @param placeProperties the properties of the place to be requested. Must not be empty. An empty
  * list will result in an error when trying to send the request. Read more about <a
  * href="https://developers.google.com/maps/documentation/places/ios-sdk/place-data-fields">Place
  * Data Fields</a>.

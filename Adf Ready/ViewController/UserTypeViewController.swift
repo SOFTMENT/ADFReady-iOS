@@ -82,6 +82,7 @@ class UserTypeViewController : UIViewController {
                 }
                 else {
                     self.beRootScreen(mIdentifier: Constants.StroyBoard.tabBarViewController)
+               
                 }
                 
             }

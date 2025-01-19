@@ -10,18 +10,28 @@ import UIKit
 import CoreLocation
 
 
-
 struct Constants {
     
     static var selectedTabBarPosition = 0
-    static var AWS_BASE_URL = "https://adfreadybucket.s3.us-east-1.amazonaws.com"
+     static var AWS_BASE_URL = "https://adfreadybucket.s3.us-east-1.amazonaws.com"
+    static var AWS_ROYAL_URL = "https://royalbucket.s3.amazonaws.com"
+   
+    static var isNavyCheckedIn = false
+    static var gymName = ""
+    static var checkedInTime = Date()
     
-    static var services = ["Undecided","Navy", "Army", "Airforce"]
-    static var genders = ["Male", "Female","No Answer"]
-    static var ageRange = ["Under 20", "21-30", "31-40", "41-50", "50+"]
-    static var reasonForDownloading = ["I am joining ADF", "I am thinking of joining ADF", "I am to try ADF ready fitness program","Other"]
+    static var selectedIndex = 0
+ 
+    static let WORKOUTS = ["Boxing", "Cardio", "CrossFit", "Cycling", "HIIT", "Pilates", "Strength Training", "Swimming", "Yoga", "Zumba"]
+
+    
+    static var services = ["Undecided","Navy", "Army", "Air Force"]
+    static var genders = ["Male", "Female","Non-binary"]
+    static var reasonForDownloading = ["I am a Candidate.","I am thinking of Joining the ADF.","I want to be ADF Ready fit.", "Other"]
     static var states = [
+        "Australian Capital Territory",
       "New South Wales",
+      "Northern Territory",
       "Queensland",
       "South Australia",
       "Tasmania",
@@ -32,9 +42,16 @@ struct Constants {
     
     struct StroyBoard {
         
+        static let entryViewController = "entryVC"
+        static let royalTabBarViewController = "royaltabbarVC"
+        static let adminTabBarViewController = "adminTabbarVC"
+        static let navyTabBarViewController = "navyTabbarVC"
+        
         static let continueASViewController = "continueAsVC"
         static let tabBarViewController = "tabbarVC"
         static let serviceViewController = "serviceVC"
+        static let adminViewController = "adminVC"
+        static let video1ViewController = "navyMainVC"
       
     }
 

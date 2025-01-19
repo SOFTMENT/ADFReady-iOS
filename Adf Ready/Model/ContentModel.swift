@@ -15,9 +15,9 @@ class ContentModel : NSObject, Codable {
     var pdfLink : String?
     var type : String?
     var date : Date?
-    var image : String?
     var orderIndex : Int?
     var videoCount : Int?
     var multiVideoModels : Array<MultiVideoModel>?
-    
+    var image : String?
+
 }

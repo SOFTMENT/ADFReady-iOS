@@ -11,5 +11,5 @@ class MyTapGesture: UITapGestureRecognizer {
     
     var id = ""
     var index : Int = 0
-   
+    var path : String = ""
 }

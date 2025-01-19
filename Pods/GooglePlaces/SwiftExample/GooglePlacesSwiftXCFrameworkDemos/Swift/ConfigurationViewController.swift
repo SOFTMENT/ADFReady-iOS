@@ -188,12 +188,8 @@ class ConfigurationViewController: UIViewController {
         switchView.setOn(false, animated: true)
       }
     }
-    // The value of the type is tag - filterTagBase and the switch is being set to on,
-    // otherwise set filter types to nil
-    guard let type = GMSPlacesAutocompleteTypeFilter(rawValue: sender.tag - filterTagBase),
-      sender.isOn
-    else {
-      configuration.autocompleteFilter.types = nil
+    // The value of the type is tag - filterTagBase
+    guard let type = GMSPlacesAutocompleteTypeFilter(rawValue: sender.tag - filterTagBase) else {
       return
     }
     configuration.autocompleteFilter.type = type
@@ -371,10 +367,12 @@ extension GMSPlaceProperty: CustomStringConvertible {
       .servesBrunch,
       .servesVegetarianFood,
       .wheelchairAccessibleEntrance,
-      .editorialSummary,
+    ]
+    all += [
       .currentOpeningHours,
       .secondaryOpeningHours,
     ]
+    all += [.editorialSummary]
     all += [.reviews]
     return all
   }()

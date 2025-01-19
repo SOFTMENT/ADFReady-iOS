@@ -30,8 +30,6 @@
 @class GMSFetchPlaceRequest;
 @class GMSFetchPhotoRequest;
 @class GMSPlaceSearchNearbyRequest;
-@class GMSPlaceIsOpenRequest;
-@class GMSPlaceIsOpenResponse;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -107,17 +105,6 @@ typedef void (^GMSPlacePhotoImageResultCallback)(UIImage *_Nullable photo,
  * @related GMSPlacesClient
  */
 typedef void (^GMSPlaceOpenStatusCallback)(GMSPlaceOpenStatus result, NSError *_Nullable error);
-
-/**
- * Callback type for receiving the open status response. If an error occurred, response will be
- * have a status of GMSPlaceOpenStatusUnknown and error will contain information about the error.
- * @param response The @c GMSPlaceIsOpenResponse that was returned.
- * @param error The error that occurred, if any.
- *
- * @related GMSPlacesClient
- */
-typedef void (^GMSPlaceOpenStatusResponseCallback)(GMSPlaceIsOpenResponse *response,
-                                                   NSError *_Nullable error);
 
 /**
  * Callback type for receiving search by text results. |results| is an array of
@@ -350,15 +337,6 @@ typedef void (^GMSPlaceSearchNearbyResultCallback)(NSArray<GMSPlace *> *_Nullabl
 - (void)findPlaceLikelihoodsFromCurrentLocationWithPlaceFields:(GMSPlaceField)placeFields
                                                       callback:
                                                           (GMSPlaceLikelihoodsCallback)callback;
-
-/**
- * Gets the open status for a place. Gets details for a place including all properties necessary to
- * determine @c GMSPlaceOpenStatus at the specified NSDate. This method is non-blocking.
- * @param isOpenRequest The request to determine the open status for a given place.
- * @param callback The callback to invoke with the open status response.
- */
-- (void)isOpenWithRequest:(GMSPlaceIsOpenRequest *)isOpenRequest
-                 callback:(GMSPlaceOpenStatusResponseCallback)callback;
 
 /**
  * Gets details for a place including all fields necessary to determine |GMSPlaceOpenStatus| at the
